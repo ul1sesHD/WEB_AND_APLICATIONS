@@ -1,0 +1,36 @@
+.barra-rosa {
+    background-color: rgb(233, 169, 173);
+    text-align: center;
+    padding: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+#cards {
+    display: inline-block;
+    border: 2px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+.head{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+#logo{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: auto;
+    height: 13px;
+}
+.buscador{
+    flex-grow: 1;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding:10px;
+    background-color: #f5f5f5;
+}
+.texto-grande{
+    font-size: 1.5rem;
+}
