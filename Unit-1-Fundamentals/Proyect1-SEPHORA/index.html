@@ -6,23 +6,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
     <title> Recreando SEFORA</title>
+    <style>
+        hr{
+            opacity: 20%;
+        }
+        p{
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
 </head>
 <body>
-    <h5 class="barra-rosa"><b>Choose a FREE sincare trial size *</b> with $30 spren. Terms apply. Use code <b>PICKME<b></b> </h5>
-    <div class="head">
-        <img id="logo" src="./img/Sephora_logo.png">
-        <input class="buscador" type="text" placeholder="🔍︎ Search">
-        <span class = "texto-grande">❤︎ 🛒</span>
+    <p class="barra-rosa"><b>Choose a FREE sincare trial size *</b> with $30 spend. *Terms apply. Use code <b>MAKEUPMUST</b> </p>
+    
+    <!-----------------------HEADER------------------------->
+    <div>
+        <div class="head">
+            <img id="logo" src="./img/Sephora_logo.png">
+            <input class="buscador" type="text" placeholder="🔍︎ Search">
+            <div class = "columnas">
+                <div>
+                    <span class = "star-align">★</span>
+                </div>
+                <div>
+                    <p>Shop Store & Delivery</p>
+                    <p style="font-size: 70%">Choose your store & location</p>
+                </div>
+            </div>
+            <div class = "columnas">
+                <div>
+                    <span class = "star-align" >★</span>
+                </div>
+                <div>
+                    <p>Services & Events</p>
+                </div>
+            </div>
+
+            <div class = "columnas">
+                <div>
+                    <span class = "star-align" >★</span>
+                </div>
+                <div>
+                    <p>Sign In</p>
+                    <p style="font-size: 70%">For FREE SHIPPING</p>
+                </div>
+            </div>
+            <span class = "texto-grande">❤︎ 🛒</span>
+
+        </div>
+
     </div>
-    <div id="cards" style="background-color: rgb(204, 140, 193, 1);">
-        <img src="img/SephoraShampoo.jpg" alt="Shampoo" border="0">
+    <!-----------------------END HEADER------------------------->
+
+    <!-----------------------NAV------------------------->
+    <div>
+        <nav class = "barra-navegacion">
+            <a href="#" class="nav-a">New</a>
+            <a href="#" class="nav-a">Makeup</a>
+            <a href="#" class="nav-a">Skincare</a>
+            <a href="#" class="nav-a">Fragrance</a>
+            <a href="#" class="nav-a">Hair</a>
+            <a href="#" class="nav-a">Tools & Brushes</a>
+            <a href="#" class="nav-a">Bath & Body</a>
+            <a href="#" class="nav-a">Mini Size</a>
+            <a href="#" class="nav-a">Brands</a>
+            <a href="#" class="nav-a">Sale & Offers</a>
+        </nav>
     </div>
-    <div id="cards" style="background-color: rgb(249, 207, 193, 1);">
-        <img src="img/Selana.png" alt="pexels-pixabay-267614" border="0">
+    <!-----------------------END NAV------------------------->
+    <div>
+        <div style="display: flex; gap: 20px;">
+            <div style="flex:1">
+                <img style="width:100%; display: block;" src="img/Selana.png" alt="RareBeauty">
+                <div style="background-color: rgb(249, 207, 193, 1); padding: 25px 30px;">
+                    <h3>Just In from Rare Beauty</h3>
+                    <p> Snag this velvety powder bronzer, plus new shades of this fan-fave blush.</p>
+                    <p><b>SHOP NOW ▸</b></p>
+                </div>
+            </div>
+            <div style="flex:1">
+                <img style="width:100%;" src="img/Selana.png" alt="RareBeauty">
+                <div style="background-color: rgb(249, 207, 193, 1); padding: 25px 30px;">
+                    <h3>Just In from Rare Beauty</h3>
+                    <p> Snag this velvety powder bronzer, plus new shades of this fan-fave blush.</p>
+                    <p><b>SHOP NOW ▸</b></p>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+     <div id="cards" style="background-color: rgb(204, 140, 193, 1);">
+                <img src="img/SephoraShampoo.jpg" alt="Shampoo" border="0">
+            </div>
+   
     <div id="cards" style="background-color: rgb(182, 181, 177, 1);">
         <img src="img/Ordinary.png" alt="pexels-pixabay-267614" border="0">
     </div>
     
+    <div>
+        <hr>
+        <div class = "sign" style = "padding-left: 10px;">
+            <div>   
+                <h5 style = "margin: 0%;">Sign In for FREE Shipping</h5>
+                <p style = "font-size: 70%; margin: 0%">Don´t have an account?<a href="https://www.sephora.com/profile/MyAccount">Create an account</a></p>
+            </div>
+            <div>
+                <button class = "sign-in">Sign-in</button>
+            </div>
+        </div>
+        <hr>
+    </div>
 </body>
 </html>

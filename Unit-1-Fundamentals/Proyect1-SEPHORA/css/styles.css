@@ -1,21 +1,30 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
 .barra-rosa {
     background-color: rgb(233, 169, 173);
     text-align: center;
     padding: 10px;
+    margin: 0px;
     font-family: sans-serif;
-    font-weight: bold;
+    font-size: 80%;
 }
-#cards {
-    display: inline-block;
-    border: 2px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    text-align: center;
+.cards-container{
+    display: flex;
+    gap: 20px;
 }
+.cards{
+    flex: 1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+
 .head{
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin: 10px;
     gap: 10px;
 }
 #logo{
@@ -33,4 +42,45 @@
 }
 .texto-grande{
     font-size: 1.5rem;
+}
+.star-align{
+    padding-right: 8px ; font-size: 200%; line-height: 1;
+}
+.sign{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0%;
+    padding: 0px;
+    margin-top: 0px;
+    justify-content: space-between;
+}
+.sign-in{
+    background-color: black;
+    color:white;
+    padding: 10px 30px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+.sign-in:hover{
+    background-color: #555555;
+}
+.columnas{
+    display: flex;
+    align-items: center;
+}
+
+.barra-navegacion{
+    display: flex;
+    align-items: center;
+    background-color: black;
+    justify-content: space-between;
+    padding-inline: 10px;
+}
+.nav-a{
+   color: white; 
+   text-decoration: none;
+   padding: 10px;
+}
+.nav-a:hover{
+    color: pink;
 }
