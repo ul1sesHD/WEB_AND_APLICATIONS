@@ -10,4 +10,5 @@ In this Unit i write practices of HTML, and currentyly write my first page with 
 ## UNIT 1: PROYECTS FUNDAMENTALS OF HTML AND CSS
 In this page we will starting full develop proyects where we will begin to combine
 
-*   [**Proyect 1: Sephora Landing**](./Unit-1-Fundamentals/)
+*   [**Proyect 1: Sephora Landing**](./Unit-1-Fundamentals/Proyect1-SEPHORA)
+*   [**Proyect 2: Web Calculator**](./Unit-1-Fundamentals/Proyect2-JS)
