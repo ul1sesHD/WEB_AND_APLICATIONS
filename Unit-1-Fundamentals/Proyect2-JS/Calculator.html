@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora Básica</title>
+
+    <script>
+        function sumar() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Por favor, ingresa ambos números.");
+                return;
+            }
+
+            document.getElementById("resultado").value = num1 + num2;
+        }
+
+        function multiplicar() {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Por favor, ingresa ambos números.");
+                return;
+            }
+
+            document.getElementById("resultado").value = num1 * num2;
+        }
+
+        function factorial() {
+            let num3 = parseInt(document.getElementById("num3").value);
+            
+            if (isNaN(num3)) {
+                alert("Por favor, ingresa un número para el factorial.");
+                return;
+            }
+
+            if (num3 < 0) {
+                alert("El factorial no está definido para números negativos.");
+                return;
+            }
+
+            let res = 1;
+            while (num3 > 0) {
+                res = res * num3;
+                num3--;
+            }
+            
+            document.getElementById("resultado").value = res;
+        }
+
+        function fibonacci() {
+            let n = parseInt(document.getElementById("num3").value);
+
+            if (isNaN(n)) {
+                alert("Por favor, ingresa un número en el campo 'factorial/fibo'.");
+                return;
+            }
+
+            if (n < 0) {
+                alert("El número debe ser mayor o igual a 0.");
+                return;
+            }
+
+            let a = 0, b = 1, temp;
+            if (n === 0) b = 0;
+
+            for (let i = 2; i <= n; i++) {
+                temp = a + b;
+                a = b;
+                b = temp;
+            }
+
+            document.getElementById("resultado").value = n === 0 ? 0 : b;
+        }
+
+        function convertir() {
+            const textInput = document.getElementById("textInput").value.trim().toLowerCase();
+
+            if (textInput === "") {
+                alert("Por favor, ingresa un número válido en texto.");
+                return;
+            }
+
+            const diccionarioNumeros = {
+                "zero": 0, "cero": 0,
+                "one": 1, "uno": 1,
+                "two": 2, "dos": 2,
+                "three": 3, "tres": 3,
+                "four": 4, "cuatro": 4,
+                "five": 5, "cinco": 5,
+                "six": 6, "seis": 6,
+                "seven": 7, "siete": 7,
+                "eight": 8, "ocho": 8,
+                "nine": 9, "nueve": 9,
+                "ten": 10, "diez": 10
+            };
+
+            let numberOutput;
+
+            if (diccionarioNumeros.hasOwnProperty(textInput)) {
+                numberOutput = diccionarioNumeros[textInput];
+            } else {
+                numberOutput = parseFloat(textInput);
+            }
+
+            if (isNaN(numberOutput)) {
+                alert("No reconozco esa palabra. Prueba con números del 0 al 10 en inglés o español.");
+                return;
+            }
+
+            document.getElementById("numberOutput").value = numberOutput;
+        }
+    </script>
+    <style>
+        label{
+            color: Green;
+        }
+        button{
+            border-radius: 50%;
+            padding: 10px 30px 10px 30px;
+            display: auto;
+            gap: 30px;
+            color: white;
+            background-color: brown;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+        body{
+            text-align: center;
+            padding: auto;
+        }
+    </style>
+</head>
+
+<body style="background-color: beige;">
+    <h1 style="font-size: 400%; font-family:Arial, Helvetica, sans-serif; color:brown">Web Calculator</h2>
+    <hr style="border: 1px solid green; width: 50%; margin: auto;"><br><br>
+    <label for="num1">Number 1:</label><br>
+    <input type="number" id="num1"><br><br>
+
+    <label for="num2">Number 2:</label><br>
+    <input type="number" id="num2"><br><br>
+
+    <label for="num3">factorial/Fibo:</label><br>
+    <input type="number" id="num3"><br><br>
+
+    <label for="resultado">Result:</label><br>
+    <input type="number" id="resultado" readonly><br><br>
+
+    <button onclick="sumar()">Add</button>
+    <button onclick="multiplicar()">Multiply</button>
+    <button onclick="factorial()">Factorial</button>
+    <button onclick="fibonacci()">Fibonacci</button> 
+
+    <hr style="border: 1px solid green; width: 50%; margin-top: 20px;"><br><br>
+    <h1 style="font-size: 400%; font-family:Arial, Helvetica, sans-serif; color:brown">Convert Text to Number</h1>
+
+    <label for="textInput">Enter a number in text (one- ten):</label><br>
+    <input type="text" id="textInput"><br><br>
+    <button onclick="convertir()">Convert to Number</button><br><br>
+    <label for="numberOutput">Converted Number:</label><br>
+    <input type="number" id="numberOutput" readonly><br><br>
+    
+</body>
+</html>
