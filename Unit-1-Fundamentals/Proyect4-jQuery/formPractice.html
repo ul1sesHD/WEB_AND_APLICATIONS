@@ -6,15 +6,10 @@
     <link rel="stylesheet" href="./css/styles.css">
     <title>Rate Nsqk - Professional Form</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-    $(document).ready(function(){
-    $("div").find("span").css({"color": "red", "border": "2px solid red"});
-    });
-    </script>
 </head>
 <body>
 
-    <h1>Rate the Artist</h1>
+    <h1 style="text-align: center; padding: 10px">Rate the Artist</h1>
     
     <div class="container">
         <div class="artist-side">
@@ -26,7 +21,7 @@
         <div class="form-side">
             <form id="artistForm" action="#" method="get">
                 
-                <fieldset id = "Personal_Data">
+                <fieldset id="Personal_Data">
                     <legend>Personal Data</legend>
                     <label for="name">Real Name</label>
                     <input type="text" id="name" name="user_name" placeholder="Your Name">
@@ -44,10 +39,6 @@
                     <input type="text" id="ig" name="ig" placeholder="@username">
                 </fieldset>
 
-                <button id = "hide_personal"> Hide Personal Data</button>
-                <button id = "show_personal"> Shpw Personal Data</button>
-                
-
                 <fieldset>
                     <legend>Rate his latest Album (ROY)</legend>
                     <label>ROY</label>
@@ -58,21 +49,23 @@
                         <label class="option-item"><input type="radio" name="rating" value="4"> 4</label>
                         <label class="option-item"><input type="radio" name="rating" value="5"> 5</label>
                     </div>
-                     <label>ATP</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Which song do you like the most?</legend>
                     <div class="row-options">
-                        <label class="option-item"><input type="radio" name="rating" value="1"> 1</label>
-                        <label class="option-item"><input type="radio" name="rating" value="2"> 2</label>
-                        <label class="option-item"><input type="radio" name="rating" value="3"> 3</label>
-                        <label class="option-item"><input type="radio" name="rating" value="4"> 4</label>
-                        <label class="option-item"><input type="radio" name="rating" value="5"> 5</label>
+                        <label class="option-item"><input type="checkbox" name="song" value="si_te_vas"> Si Te Vas</label>
+                        <label class="option-item"><input type="checkbox" name="song" value="roy"> ROY</label>
+                        <label class="option-item"><input type="checkbox" name="song" value="botanica"> Botánica</label>
                     </div>
-                     <label>Botanica</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Which song do you like the least?</legend>
                     <div class="row-options">
-                        <label class="option-item"><input type="radio" name="rating" value="1"> 1</label>
-                        <label class="option-item"><input type="radio" name="rating" value="2"> 2</label>
-                        <label class="option-item"><input type="radio" name="rating" value="3"> 3</label>
-                        <label class="option-item"><input type="radio" name="rating" value="4"> 4</label>
-                        <label class="option-item"><input type="radio" name="rating" value="5"> 5</label>
+                        <label class="option-item"><input type="checkbox" name="worst_song" value="si_te_vas"> Si Te Vas</label>
+                        <label class="option-item"><input type="checkbox" name="worst_song" value="roy"> ROY</label>
+                        <label class="option-item"><input type="checkbox" name="worst_song" value="botanica"> Botánica</label>
                     </div>
                 </fieldset>
 
@@ -93,34 +86,161 @@
                     <option value="atp">ATP</option>
                 </select>
 
-                <label>Sugerations of Country to visit</label>
-                <select >
+                <label>Suggestions of Country to visit</label>
+                <select>
                     <option value="">-- Select One --</option>
-                    <option value="botanica">Mexico</option>
-                    <option value="roy">USA</option>
-                    <option value="atp">Canada</option>
+                    <option value="mexico">Mexico</option>
+                    <option value="usa">USA</option>
+                    <option value="canada">Canada</option>
                 </select> 
 
                 <label for="concert_date">When did you first hear him?</label>
                 <input type="date" id="concert_date" name="discovery_date">
 
-                <label>When his birthday?</label>
+                <label>When is his birthday?</label>
                 <input type="date">
 
                 <label for="message">Dedicate a message</label>
                 <textarea id="message" name="message" rows="3" placeholder="I love your music because..."></textarea>
 
                 <button type="submit">SEND REVIEW</button>
+                <button type="button" id="btn-fiesta" style="background:#ff00ea; margin-top:15px; border:none; color:white;">Modo Fiesta</button>
 
             </form>
         </div>
     </div>
 
     <script>
-        
-        const personalData = document.getElementById('Personal_Data');
-        document.getElementById('hide_personal').onclick = () => personalData.style.display = 'none';
-        document.getElementById('show_personal').onclick = () => personalData.style.display = 'block';
+        $(document).ready(function() {
+
+            $(".container").hide();
+            $("body").prepend('<div id="start-screen" style="text-align:center; margin-top:20vh; display:flex; justify-content:center;"><button id="btn-start" style="font-size:2rem; padding:20px 40px; border-radius:10px; cursor:pointer;">¿Empezar Cuestionario?</button></div>');
+
+            $("#btn-start").click(function() {
+                $("#start-screen").fadeOut(500, function() {
+                    $(".container").slideDown(800);
+                });
+            });
+
+            // 2. Botón de envío bloqueado
+            let $submitBtn = $("button[type='submit']");
+            $submitBtn.prop("disabled", true).css({"opacity": "0.4", "cursor": "not-allowed"});
+
+            $("#Personal_Data input").on("input", function() {
+                let allFilled = true;
+                $("#Personal_Data input").each(function() {
+                    if ($(this).val().trim() === "") {
+                        allFilled = false;
+                    }
+                });
+
+                if (allFilled) {
+                    $submitBtn.prop("disabled", false).css({"opacity": "1", "cursor": "pointer"});
+                } else {
+                    $submitBtn.prop("disabled", true).css({"opacity": "0.4", "cursor": "not-allowed"});
+                }
+            });
+
+            // 3. Animación de Ciclo de Fotos
+            let images = ["./img/nsqk.png", "./img/nsqk2.png", "./img/nsqk3.png"];
+            let currentImgIndex = 0;
+
+            setInterval(function() {
+                currentImgIndex = (currentImgIndex + 1) % images.length;
+                $(".artist-img").fadeOut(400, function() {
+                    $(this).attr("src", images[currentImgIndex]).fadeIn(400);
+                });
+            }, 3000);
+
+            // 4. Estilo Dinámico (Verde)
+            $("#Personal_Data").css("transition", "all 0.5s ease");
+
+            $("#Personal_Data input").on("input", function() {
+                let complete = true;
+                $("#Personal_Data input").each(function() {
+                    if ($(this).val() === "") complete = false;
+                });
+
+                if (complete) {
+                    $("#Personal_Data").css({"border-color": "#4CAF50", "box-shadow": "0 0 15px rgba(76, 175, 80, 0.5)"});
+                } else {
+                    $("#Personal_Data").css({"border-color": "#000", "box-shadow": "none"});
+                }
+            });
+
+            // 5. Animación "Hover" en las Imágenes
+            $(".artist-img").hover(
+                function() { 
+                    $(this).css({ transform: "scale(1.08) rotate(2deg)", transition: "0.3s" }); 
+                },
+                function() { 
+                    $(this).css({ transform: "scale(1) rotate(0deg)" }); 
+                }
+            );
+
+            // 6. Modo Fiesta (CORREGIDO: Ahora se inyecta internamente sin romper Flexbox)
+            $(".container").css("position", "relative");
+            $(".container").append('<div id="marco-nsqk" style="display:none; position:absolute; top:-15px; left:-15px; right:-15px; bottom:-15px; border: 8px dashed #ff00ea; border-radius: 30px; pointer-events:none; z-index:10;"><div id="texto-fiesta" style="position:absolute; top:-20px; left:30px; background:#ffffff; color:#ff00ea; font-weight:900; font-size:1.2rem; padding:0 15px;">NSQK NSQK NSQK</div></div>');
+
+            $("#btn-fiesta").click(function(e) {
+                e.preventDefault();
+                $("#marco-nsqk").fadeToggle(600);
+            });
+
+            // 7. Añadir otra canción
+            $("<button type='button' id='add-song' style='background:#555; color:white; border:none; padding:8px; font-size:0.7rem; margin-top:5px; cursor:pointer; border-radius:5px;'>+ Agregar otra canción</button>").insertAfter("#fav_song");
+
+            $("#add-song").click(function(e) {
+                e.preventDefault();
+                $("<input type='text' placeholder='Otra canción...' style='margin-top:5px;'>")
+                    .hide().insertBefore(this).slideDown();
+            });
+
+            // 8. Barra de progreso
+            $("form").prepend('<div style="width:100%; height:12px; background:#e0e0e0; border-radius:6px; margin-bottom:20px;"><div id="form-progress" style="width:0%; height:100%; background:#000; border-radius:6px; transition:0.4s;"></div></div>');
+
+            $("form").on("change input", "input, select, textarea", function() {
+                let fields = $("form input:not([type='radio']):not([type='checkbox']), form select, form textarea");
+                let filled = 0;
+                
+                fields.each(function() {
+                    if($(this).val() !== "") filled++;
+                });
+
+                let percentage = (filled / fields.length) * 100;
+                $("#form-progress").css("width", percentage + "%");
+            });
+
+            // 9. Modo Oscuro
+            $("<button type='button' id='btn-darkmode' style='position:fixed; top:20px; right:20px; background:#333; color:white; border:none; padding:10px; border-radius:8px; cursor:pointer; z-index:1000;'>🌙 Modo Oscuro</button>").appendTo("body");
+
+            $("body").css("transition", "background-color 0.5s, color 0.5s");
+
+            $("#btn-darkmode").click(function() {
+                $("body").toggleClass("dark-theme");
+                if($("body").hasClass("dark-theme")) {
+                    $("body").css({"background-color": "#121212", "color": "#fff"});
+                    $(".container").css({"background-color": "#1e1e1e", "border-color": "#444", "box-shadow": "0 10px 30px rgba(255,255,255,0.05)"});
+                    $("input, select, textarea, fieldset").css({"background-color": "#2a2a2a", "color": "#fff", "border-color": "#555"});
+                    $(this).text("Modo Claro").css({"background":"#fff", "color":"#000"});
+                    $("#texto-fiesta").css("background-color", "#1e1e1e"); 
+                } else {
+                    $("body").css({"background-color": "#f0f0f0", "color": "#000"});
+                    $(".container").css({"background-color": "white", "border-color": "#000", "box-shadow": "0 10px 30px rgba(0,0,0,0.1)"});
+                    $("input, select, textarea, fieldset").css({"background-color": "white", "color": "#000", "border-color": "#ccc"});
+                    $(this).text("Modo Oscuro").css({"background":"#333", "color":"#fff"});
+                    $("#texto-fiesta").css("background-color", "#ffffff");
+                }
+            });
+
+            // 10. Animación de Texto "Respiración"
+            function breatheText() {
+                $("h1").animate({ letterSpacing: "5px" }, 1500, "swing")
+                       .animate({ letterSpacing: "-1px" }, 1500, "swing", breatheText);
+            }
+            breatheText(); 
+
+        }); 
     </script>
 
 </body>
