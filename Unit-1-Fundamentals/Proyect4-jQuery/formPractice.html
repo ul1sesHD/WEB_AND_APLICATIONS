@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Rate Nsqk - Professional Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+    $("div").find("span").css({"color": "red", "border": "2px solid red"});
+    });
+    </script>
+</head>
+<body>
+
+    <h1>Rate the Artist</h1>
+    
+    <div class="container">
+        <div class="artist-side">
+            <img src="./img/nsqk.png" alt="Nsqk" class="artist-img">
+            <h2 style="font-size: 2rem; margin-top: 15px;">NSQK</h2>
+            <p style="font-size: 0.8rem; opacity: 0.7;">GENRE: ALTERNATIVE / R&B</p>
+        </div>
+
+        <div class="form-side">
+            <form id="artistForm" action="#" method="get">
+                
+                <fieldset id = "Personal_Data">
+                    <legend>Personal Data</legend>
+                    <label for="name">Real Name</label>
+                    <input type="text" id="name" name="user_name" placeholder="Your Name">
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="user_email" placeholder="mail@example.com">
+
+                    <label for="fav_song">Favorite Song</label>
+                    <input type="text" id="fav_song" name="fav_song" placeholder="e.g. Si Te Vas">
+
+                    <label for="city">Your City</label>
+                    <input type="text" id="city" name="city" placeholder="Monterrey, MX">
+
+                    <label for="ig">Instagram User</label>
+                    <input type="text" id="ig" name="ig" placeholder="@username">
+                </fieldset>
+
+                <button id = "hide_personal"> Hide Personal Data</button>
+                <button id = "show_personal"> Shpw Personal Data</button>
+                
+
+                <fieldset>
+                    <legend>Rate his latest Album (ROY)</legend>
+                    <label>ROY</label>
+                    <div class="row-options">
+                        <label class="option-item"><input type="radio" name="rating" value="1"> 1</label>
+                        <label class="option-item"><input type="radio" name="rating" value="2"> 2</label>
+                        <label class="option-item"><input type="radio" name="rating" value="3"> 3</label>
+                        <label class="option-item"><input type="radio" name="rating" value="4"> 4</label>
+                        <label class="option-item"><input type="radio" name="rating" value="5"> 5</label>
+                    </div>
+                     <label>ATP</label>
+                    <div class="row-options">
+                        <label class="option-item"><input type="radio" name="rating" value="1"> 1</label>
+                        <label class="option-item"><input type="radio" name="rating" value="2"> 2</label>
+                        <label class="option-item"><input type="radio" name="rating" value="3"> 3</label>
+                        <label class="option-item"><input type="radio" name="rating" value="4"> 4</label>
+                        <label class="option-item"><input type="radio" name="rating" value="5"> 5</label>
+                    </div>
+                     <label>Botanica</label>
+                    <div class="row-options">
+                        <label class="option-item"><input type="radio" name="rating" value="1"> 1</label>
+                        <label class="option-item"><input type="radio" name="rating" value="2"> 2</label>
+                        <label class="option-item"><input type="radio" name="rating" value="3"> 3</label>
+                        <label class="option-item"><input type="radio" name="rating" value="4"> 4</label>
+                        <label class="option-item"><input type="radio" name="rating" value="5"> 5</label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Which vibes do you prefer?</legend>
+                    <div class="row-options">
+                        <label class="option-item"><input type="checkbox" name="vibe" value="sad"> Sad Boy</label>
+                        <label class="option-item"><input type="checkbox" name="vibe" value="hype"> Hype</label>
+                        <label class="option-item"><input type="checkbox" name="vibe" value="chill"> Chill</label>
+                    </div>
+                </fieldset>
+
+                <label for="first_album">Discovery Album</label>
+                <select id="first_album" name="first_album">
+                    <option value="">-- Select One --</option>
+                    <option value="botanica">Botánica</option>
+                    <option value="roy">ROY</option>
+                    <option value="atp">ATP</option>
+                </select>
+
+                <label>Sugerations of Country to visit</label>
+                <select >
+                    <option value="">-- Select One --</option>
+                    <option value="botanica">Mexico</option>
+                    <option value="roy">USA</option>
+                    <option value="atp">Canada</option>
+                </select> 
+
+                <label for="concert_date">When did you first hear him?</label>
+                <input type="date" id="concert_date" name="discovery_date">
+
+                <label>When his birthday?</label>
+                <input type="date">
+
+                <label for="message">Dedicate a message</label>
+                <textarea id="message" name="message" rows="3" placeholder="I love your music because..."></textarea>
+
+                <button type="submit">SEND REVIEW</button>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        
+        const personalData = document.getElementById('Personal_Data');
+        document.getElementById('hide_personal').onclick = () => personalData.style.display = 'none';
+        document.getElementById('show_personal').onclick = () => personalData.style.display = 'block';
+    </script>
+
+</body>
+</html>
