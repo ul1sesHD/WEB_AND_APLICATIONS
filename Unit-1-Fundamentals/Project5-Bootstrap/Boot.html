@@ -1,0 +1,145 @@
+<!--
+Container (.container): Centers the content and adds padding.
+
+Typography (.text-center, .mb-4): Standardizes fonts and spacing.
+
+Shadows/Borders (.shadow, .rounded): Adds a professional depth to the form.
+
+Badges (.badge): Used to display the genre.
+
+Grid System (.row, .col-md-6): Makes the form responsive (two columns on desktop, one on mobile).
+
+Form Controls (.form-control): Styles the inputs, dates, and textareas.
+
+Form Labels (.form-label): Correct spacing for field titles.
+
+Form Checks (.form-check, .form-check-inline): Modern styling for radio buttons and checkboxes.
+
+Form Select (.form-select): Standardized dropdown menus.
+
+Buttons (.btn, .btn-dark, .d-grid): Styled buttons that span the full width.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Nsqk - Professional Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; padding: 50px 0; }
+        .artist-img { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; }
+    </style>
+</head>
+<body>
+
+<div class="container shadow p-4 bg-white rounded" style="max-width: 800px;">
+    
+    <h1 class="text-center mb-4">Rate the Artist</h1>
+
+    <div class="row align-items-center mb-5 text-center">
+        <div class="col-12">
+            <img src="./img/nsqk.png" alt="Nsqk" class="artist-img mb-3 border">
+            <h2>NSQK</h2>
+            <span class="badge bg-secondary">GENRE: ALTERNATIVE / R&B</span>
+        </div>
+    </div>
+
+    <form action="#" method="get">
+        
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Real Name</label>
+                <input type="text" class="form-control" name="user_name" placeholder="Your Name" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" name="user_email" placeholder="mail@example.com" required>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Favorite Song</label>
+            <input type="text" class="form-control" name="fav_song" placeholder="e.g. Si Te Vas">
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Your City</label>
+                <input type="text" class="form-control" name="city" placeholder="Monterrey, MX">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Instagram User</label>
+                <input type="text" class="form-control" name="ig" placeholder="@username">
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="mb-4">
+            <label class="form-label d-block">Rate the latest Album (ROY)</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="rating" id="r1" value="1">
+                <label class="form-check-label" for="r1">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="rating" id="r2" value="2">
+                <label class="form-check-label" for="r2">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="rating" id="r3" value="3">
+                <label class="form-check-label" for="r3">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="rating" id="r4" value="4">
+                <label class="form-check-label" for="r4">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="rating" id="r5" value="5">
+                <label class="form-check-label" for="r5">5</label>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label d-block">Which songs do you like the most?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="si_te_vas" id="s1">
+                <label class="form-check-label" for="s1">Si Te Vas</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="roy" id="s2">
+                <label class="form-check-label" for="s2">ROY</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Discovery Album</label>
+                <select class="form-select" name="first_album">
+                    <option selected>-- Select One --</option>
+                    <option value="botanica">Botánica</option>
+                    <option value="roy">ROY</option>
+                    <option value="atp">ATP</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">When did you first hear him?</label>
+                <input type="date" class="form-control" name="discovery_date">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Dedicate a message</label>
+            <textarea class="form-control" rows="3" placeholder="I love your music because..."></textarea>
+        </div>
+
+        <div class="d-grid gap-2">
+            <button class="btn btn-dark" type="submit">SEND REVIEW</button>
+            <button class="btn btn-outline-danger" type="button">PARTY MODE</button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
