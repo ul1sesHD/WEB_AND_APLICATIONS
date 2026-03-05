@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Rate Nsqk - XML System</title>
+</head>
+<body>
+
+    <nav class="navbar">
+        <button onclick="changeView('home')">Home</button>
+        <button onclick="changeView('create')">New Review (Create)</button>
+        <button onclick="changeView('queries')">View Reviews (Queries)</button>
+        <button onclick="changeView('updates')">Modify (Updates)</button>
+        <button onclick="changeView('deletions')">Delete (Deletions)</button>
+    </nav>
+
+    <h1 style="text-align: center; padding: 10px;">NSQK Review Management</h1>
+
+    <div id="home" class="view active">
+        <div class="container text-center">
+            <img src="./img/nsqk.png" alt="Nsqk" class="artist-img" style="max-width: 200px; border-radius: 15px;">
+            <h2>Welcome to the XML Management System</h2>
+            <p>Select an option in the top menu to get started.</p>
+        </div>
+    </div>
+
+    <div id="create" class="view" style="display: none;">
+        <div class="container">
+            <div class="artist-side">
+                <img src="./img/nsqk.png" alt="Nsqk" class="artist-img">
+                <h2 style="font-size: 2rem; margin-top: 15px;">NSQK</h2>
+                <p style="font-size: 0.8rem; opacity: 0.7;">CREATE A REVIEW</p>
+            </div>
+            <div class="form-side">
+                <form id="formCreate" class="body" onsubmit="event.preventDefault(); addRecord();">
+                    <fieldset id="Personal_Data">
+                        <legend>Personal Information</legend>
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="Your Name">
+
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="mail@example.com">
+
+                        <label for="fav_song">Favorite Song</label>
+                        <input type="text" id="fav_song" required placeholder="E.g. Si Te Vas">
+
+                        <label for="city">City</label>
+                        <input type="text" id="city" required placeholder="Monterrey, MX">
+                        
+                        <label for="first_album">Discovery Album</label>
+                        <select id="first_album" required>
+                            <option value="">-- Select One --</option>
+                            <option value="Botánica">Botánica</option>
+                            <option value="ROY">ROY</option>
+                            <option value="ATP">ATP</option>
+                        </select>
+                    </fieldset>
+                    <button type="submit">SAVE REVIEW</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="queries" class="view" style="display: none;">
+        <div class="container full-width">
+            <h2>Review Report</h2>
+            <table class="table" id="queryTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Favorite Song</th>
+                        <th>City</th>
+                        <th>Album</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="updates" class="view" style="display: none;">
+        <div class="container full-width">
+            <h2>Modify Review</h2>
+            <table class="table" id="updateTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+
+            <div id="editContainer" style="display: none; margin-top: 20px;">
+                <form id="formUpdates" class="body" onsubmit="event.preventDefault(); saveEdit();">
+                    <fieldset>
+                        <legend>Editing Record</legend>
+                        <input type="hidden" id="edit_id">
+                        
+                        <label for="edit_name">Full Name</label>
+                        <input type="text" id="edit_name" required>
+
+                        <label for="edit_email">Email Address</label>
+                        <input type="email" id="edit_email" required>
+
+                        <label for="edit_fav_song">Favorite Song</label>
+                        <input type="text" id="edit_fav_song" required>
+
+                        <label for="edit_city">City</label>
+                        <input type="text" id="edit_city" required>
+                        
+                        <label for="edit_first_album">Discovery Album</label>
+                        <select id="edit_first_album" required>
+                            <option value="Botánica">Botánica</option>
+                            <option value="ROY">ROY</option>
+                            <option value="ATP">ATP</option>
+                        </select>
+                        <button type="submit">UPDATE</button>
+                        <button type="button" onclick="cancelEdit()" style="background: #e74c3c;">CANCEL</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="deletions" class="view" style="display: none;">
+        <div class="container full-width">
+            <h2>Delete Review</h2>
+            <table class="table" id="deletionTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Song</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="logic.js"></script>
+</body>
+</html>
