@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Rate Nsqk - Professional Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="artistApp" ng-controller="FormController as vm">
+
+    <h1 style="text-align: center; padding: 10px">Rate the Artist</h1>
+    
+    <div id="start-screen" ng-show="!vm.started" style="text-align:center; margin-top:20vh; display:flex; justify-content:center;">
+        <button id="btn-start" style="font-size:2rem; padding:20px 40px; border-radius:10px; cursor:pointer;" ng-click="vm.started=true">¿Empezar Cuestionario?</button>
+    </div>
+
+    <div class="container" ng-show="vm.started">
+        <div class="artist-side">
+            <img ng-src="{{vm.images[vm.currentImgIndex]}}" alt="Nsqk" class="artist-img">
+            <h2 style="font-size: 2rem; margin-top: 15px;">NSQK</h2>
+            <p style="font-size: 0.8rem; opacity: 0.7;">GENRE: ALTERNATIVE / R&B</p>
+        </div>
+
+        <div class="form-side">
+            <form name="artistForm" ng-submit="vm.submit()" novalidate>
+                
+                <fieldset id="Personal_Data">
+                    <legend>Personal Data</legend>
+                    <label for="name">Real Name</label>
+                    <input type="text" id="name" name="user_name" placeholder="Your Name" ng-model="vm.formData.name" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="user_email" placeholder="mail@example.com" ng-model="vm.formData.email" required>
+
+                    <label for="fav_song">Favorite Song</label>
+                    <input type="text" id="fav_song" name="fav_song" placeholder="e.g. Si Te Vas" ng-model="vm.formData.fav_song">
+
+                    <label for="city">Your City</label>
+                    <input type="text" id="city" name="city" placeholder="Monterrey, MX" ng-model="vm.formData.city">
+
+                    <label for="ig">Instagram User</label>
+                    <input type="text" id="ig" name="ig" placeholder="@username" ng-model="vm.formData.ig">
+                </fieldset>
+
+                <fieldset>
+                    <legend>Rate his latest Album (ROY)</legend>
+                    <label>ROY</label>
+                    <div class="row-options">
+                        <label class="option-item"><input type="radio" name="rating" value="1" ng-model="vm.formData.rating"> 1</label>
+                        <label class="option-item"><input type="radio" name="rating" value="2" ng-model="vm.formData.rating"> 2</label>
+                        <label class="option-item"><input type="radio" name="rating" value="3" ng-model="vm.formData.rating"> 3</label>
+                        <label class="option-item"><input type="radio" name="rating" value="4" ng-model="vm.formData.rating"> 4</label>
+                        <label class="option-item"><input type="radio" name="rating" value="5" ng-model="vm.formData.rating"> 5</label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Which song do you like the most?</legend>
+                    <div class="row-options">
+                        <label class="option-item"><input type="checkbox" ng-model="vm.formData.song_si_te_vas"> Si Te Vas</label>
+                        <label class="option-item"><input type="checkbox" ng-model="vm.formData.song_roy"> ROY</label>
+                        <label class="option-item"><input type="checkbox" ng-model="vm.formData.song_botanica"> Botánica</label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Which song do you like the least?</legend>
+                    <div class="row-options">
+                        <label class="option-item"><input type="checkbox" ng-model="vm.formData.worst_song_si_te_vas"> Si Te Vas</label>
+                        <label class="option-item"><input type="checkbox" ng-model="vm.formData.worst_song_roy"> ROY</label>
+                        <label class="option-item"><input type="checkbox" ng-model="vm.formData.worst_song_botanica"> Botánica</label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Which vibes do you prefer?</legend>
+                    <div class="row-options">
+                        <label class="option-item"><input type="checkbox" ng-model="vm.formData.vibe_sad"> Sad Boy</label>
+                        <label class="option-item"><input type="checkbox" ng-model="vm.formData.vibe_hype"> Hype</label>
+                        <label class="option-item"><input type="checkbox" ng-model="vm.formData.vibe_chill"> Chill</label>
+                    </div>
+                </fieldset>
+
+                <label for="first_album">Discovery Album</label>
+                <select id="first_album" name="first_album" ng-model="vm.formData.first_album">
+                    <option value="">-- Select One --</option>
+                    <option value="botanica">Botánica</option>
+                    <option value="roy">ROY</option>
+                    <option value="atp">ATP</option>
+                </select>
+
+                <label>Suggestions of Country to visit</label>
+                <select ng-model="vm.formData.country">
+                    <option value="">-- Select One --</option>
+                    <option value="mexico">Mexico</option>
+                    <option value="usa">USA</option>
+                    <option value="canada">Canada</option>
+                </select> 
+
+                <label for="concert_date">When did you first hear him?</label>
+                <input type="date" id="concert_date" name="discovery_date" ng-model="vm.formData.discovery_date">
+
+                <label>When is his birthday?</label>
+                <input type="date" ng-model="vm.formData.birthday">
+
+                <label for="message">Dedicate a message</label>
+                <textarea id="message" name="message" rows="3" placeholder="I love your music because..." ng-model="vm.formData.message"></textarea>
+
+                <button type="submit" ng-disabled="artistForm.$invalid" style="opacity: {{artistForm.$invalid ? 0.4 : 1}}; cursor: {{artistForm.$invalid ? 'not-allowed' : 'pointer'}};">SEND REVIEW</button>
+                <button type="button" id="btn-fiesta" style="background:#ff00ea; margin-top:15px; border:none; color:white;">Modo Fiesta</button>
+
+            </form>
+
+            <div ng-if="vm.submitted" style="margin-top:20px;">
+                <label><strong>Información enviada:</strong></label>
+                <pre>{{vm.result | json}}</pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    angular.module('artistApp', [])
+    .controller('FormController', ['$scope', '$interval', function($scope, $interval) {
+        var vm = this;
+        vm.formData = {};
+        vm.submitted = false;
+        vm.started = false;
+        vm.result = {};
+
+        vm.images = ["./img/nsqk.png", "./img/nsqk2.png", "./img/nsqk3.png"];
+        vm.currentImgIndex = 0;
+        $interval(function() {
+            vm.currentImgIndex = (vm.currentImgIndex + 1) % vm.images.length;
+        }, 3000);
+
+        vm.submit = function() {
+            if ($scope.artistForm.$valid) {
+                vm.submitted = true;
+                vm.result = angular.copy(vm.formData);
+            }
+        };
+    }]);
+    </script>
+
+</body>
+</html>
