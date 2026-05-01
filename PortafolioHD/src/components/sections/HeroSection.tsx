@@ -1,5 +1,22 @@
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui";
 import sections from "@/lib/data/sections.json";
+
+// dynamic con ssr:false porque Three.js requiere APIs del browser (WebGL, window)
+const HeroCanvas = dynamic(() => import("@/components/3d/HeroCanvas"), {
+  ssr: false,
+  // Fallback hasta que carga el canvas: gradiente estatico
+  loading: () => (
+    <div
+      aria-hidden
+      className="absolute inset-0 pointer-events-none"
+      style={{
+        background:
+          "radial-gradient(ellipse at 50% 50%, rgba(92,88,237,0.2) 0%, transparent 65%)",
+      }}
+    />
+  ),
+});
 
 export function HeroSection() {
   const { title, subtitle, description } = sections.hero;
@@ -9,16 +26,10 @@ export function HeroSection() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid"
     >
-      <div
-        aria-hidden
-        className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-neon-violet/20 blur-3xl animate-float"
-      />
-      <div
-        aria-hidden
-        className="absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full bg-neon-cyan/15 blur-3xl animate-float"
-        style={{ animationDelay: "2s" }}
-      />
+      {/* Canvas 3D como fondo — absolute, pointer-events-none */}
+      <HeroCanvas />
 
+      {/* Contenido de texto encima del canvas */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
         <span className="inline-block px-4 py-1.5 mb-8 rounded-full border border-neon-cyan/40 bg-deep-blue/40 backdrop-blur text-xs uppercase tracking-widest text-neon-cyan">
           Full Stack · Designer · Innovator
@@ -42,7 +53,9 @@ export function HeroSection() {
             <Button size="lg">Ver Proyectos</Button>
           </a>
           <a href="#contact">
-            <Button variant="secondary" size="lg">Conectemos</Button>
+            <Button variant="secondary" size="lg">
+              Conectemos
+            </Button>
           </a>
         </div>
 
