@@ -38,12 +38,12 @@ export function HeroSection() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button size="lg" onClick={() => (window.location.href = "#projects")}>
-            Ver Proyectos
-          </Button>
-          <Button variant="secondary" size="lg" onClick={() => (window.location.href = "#contact")}>
-            Conectemos
-          </Button>
+          <a href="#projects">
+            <Button size="lg">Ver Proyectos</Button>
+          </a>
+          <a href="#contact">
+            <Button variant="secondary" size="lg">Conectemos</Button>
+          </a>
         </div>
 
         <div className="mt-20 flex justify-center">
