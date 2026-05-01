@@ -1,0 +1,30 @@
+[
+  {
+    "id": "portfolio-cyberpunk",
+    "title": "UlisesHD Portfolio",
+    "description": "Portafolio profesional con estética cyberpunk, hero 3D interactivo y arquitectura escalable.",
+    "category": "Full-Stack",
+    "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Three.js", "Framer Motion", "GSAP"],
+    "liveUrl": "",
+    "githubUrl": "https://github.com/ul1sesHD/WEB_AND_APLICATIONS",
+    "featured": true
+  },
+  {
+    "id": "sap-crud-form",
+    "title": "SAP CRUD Form Manager",
+    "description": "Sistema de gestión con CRUD completo, integrado con SAP usando JavaScript moderno.",
+    "category": "Full-Stack",
+    "technologies": ["JavaScript", "SAP", "HTML5", "CSS3"],
+    "githubUrl": "https://github.com/ul1sesHD/WEB_AND_APLICATIONS",
+    "featured": true
+  },
+  {
+    "id": "bootstrap-form",
+    "title": "Bootstrap Form Project",
+    "description": "Formulario profesional construido con Bootstrap, validación y diseño responsive.",
+    "category": "Frontend",
+    "technologies": ["HTML5", "CSS3", "Bootstrap", "JavaScript"],
+    "githubUrl": "https://github.com/ul1sesHD/WEB_AND_APLICATIONS",
+    "featured": false
+  }
+]

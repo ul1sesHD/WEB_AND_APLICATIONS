@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "title": "UlisesHD",
+    "subtitle": "Full Stack Engineer · Designer · Innovator",
+    "description": "Construyo experiencias digitales profesionales fusionando ingeniería de software, diseño UX/UI e inteligencia artificial. Cada proyecto es una oportunidad para crear impacto."
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "subtitle": "Quién soy y qué hago",
+    "description": "Ingeniero apasionado por crear soluciones tecnológicas que combinen excelencia técnica, diseño impecable e impacto social. Mi enfoque integra backend robusto, frontend creativo, IA aplicada y liderazgo de equipos."
+  },
+  "skills": {
+    "title": "Habilidades & Experiencia",
+    "subtitle": "Stack profesional",
+    "description": "Tecnologías y disciplinas que domino para entregar productos completos."
+  },
+  "projects": {
+    "title": "Proyectos Destacados",
+    "subtitle": "Mi trabajo en acción",
+    "description": "Selección de proyectos que demuestran mi enfoque end-to-end."
+  },
+  "design": {
+    "title": "Diseño & Producción",
+    "subtitle": "Más allá del código",
+    "description": "Diseño UX/UI, sistemas de marca, producción de contenido y narrativa visual."
+  },
+  "leadership": {
+    "title": "Liderazgo & Impacto",
+    "subtitle": "Equipos, comunidad y propósito",
+    "description": "Compromiso con liderar equipos, generar entendimiento global e impulsar cambios sociales y ambientales."
+  },
+  "contact": {
+    "title": "Conectemos",
+    "subtitle": "¿Tienes un proyecto en mente?",
+    "description": "Hablemos sobre cómo puedo aportar valor a tu equipo o iniciativa."
+  }
+}

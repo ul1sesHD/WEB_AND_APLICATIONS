@@ -1,0 +1,76 @@
+{
+  "categories": [
+    {
+      "name": "Backend",
+      "description": "Sistemas robustos y escalables",
+      "skills": [
+        { "name": "SQL Databases", "proficiency": "Advanced", "years": 4 },
+        { "name": "NoSQL Databases", "proficiency": "Advanced", "years": 3 },
+        { "name": "Coding & Algorithms", "proficiency": "Expert", "years": 5 },
+        { "name": "Git & Versionado", "proficiency": "Expert", "years": 5 }
+      ]
+    },
+    {
+      "name": "Cloud & DevOps",
+      "description": "Infraestructura moderna en la nube",
+      "skills": [
+        { "name": "AWS EC2", "proficiency": "Advanced", "years": 3 },
+        { "name": "AWS Lambda", "proficiency": "Advanced", "years": 3 },
+        { "name": "AWS IAM", "proficiency": "Advanced", "years": 3 },
+        { "name": "Microservicios", "proficiency": "Advanced", "years": 3 },
+        { "name": "Cloud Practitioner", "proficiency": "Advanced", "years": 2 }
+      ]
+    },
+    {
+      "name": "AI & Data",
+      "description": "Inteligencia artificial aplicada",
+      "skills": [
+        { "name": "Prompting", "proficiency": "Expert", "years": 2 },
+        { "name": "AI Agents", "proficiency": "Advanced", "years": 2 },
+        { "name": "Data Science", "proficiency": "Intermediate", "years": 2 }
+      ]
+    },
+    {
+      "name": "Frontend",
+      "description": "Interfaces modernas e impactantes",
+      "skills": [
+        { "name": "React / Next.js", "proficiency": "Expert", "years": 4 },
+        { "name": "TypeScript", "proficiency": "Advanced", "years": 3 },
+        { "name": "Tailwind CSS", "proficiency": "Expert", "years": 3 },
+        { "name": "Three.js / R3F", "proficiency": "Intermediate", "years": 1 }
+      ]
+    },
+    {
+      "name": "Design & Production",
+      "description": "Diseño UX/UI y producción de contenido",
+      "skills": [
+        { "name": "UX/UI Design", "proficiency": "Advanced", "years": 4 },
+        { "name": "Design Systems", "proficiency": "Advanced", "years": 3 },
+        { "name": "Ilustración", "proficiency": "Intermediate", "years": 3 },
+        { "name": "Content Creation", "proficiency": "Advanced", "years": 3 },
+        { "name": "Writing", "proficiency": "Advanced", "years": 4 },
+        { "name": "Video Production & Edición", "proficiency": "Intermediate", "years": 2 }
+      ]
+    },
+    {
+      "name": "Project Management",
+      "description": "Gestión y entrega de proyectos",
+      "skills": [
+        { "name": "Design Thinking", "proficiency": "Advanced", "years": 3 },
+        { "name": "Scrum", "proficiency": "Advanced", "years": 3 },
+        { "name": "Agile", "proficiency": "Advanced", "years": 3 },
+        { "name": "Gantt Planning", "proficiency": "Advanced", "years": 3 }
+      ]
+    },
+    {
+      "name": "Leadership",
+      "description": "Liderazgo y visión global",
+      "skills": [
+        { "name": "Team Leadership", "proficiency": "Advanced", "years": 3 },
+        { "name": "Global Understanding", "proficiency": "Advanced", "years": 3 },
+        { "name": "Environmental Impact", "proficiency": "Advanced", "years": 2 },
+        { "name": "Social Impact", "proficiency": "Advanced", "years": 2 }
+      ]
+    }
+  ]
+}

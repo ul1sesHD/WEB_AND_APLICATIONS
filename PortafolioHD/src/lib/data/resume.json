@@ -1,0 +1,17 @@
+{
+  "name": "Ulises Hernández",
+  "title": "Full Stack Engineer",
+  "tagline": "Building digital experiences that matter",
+  "email": "ulises.hd06@gmail.com",
+  "location": "México",
+  "yearsOfExperience": 5,
+  "languages": ["Español (Nativo)", "English (Profesional)"],
+  "education": [],
+  "highlights": [
+    "Backend & Cloud (AWS) experience",
+    "Frontend con stack moderno (Next.js, React, Three.js)",
+    "AI Engineering (prompting, agents, data)",
+    "Diseño UX/UI y sistemas de marca",
+    "Liderazgo de equipos y proyectos con impacto"
+  ]
+}
