@@ -36,6 +36,18 @@
   line-height: 0.9;
   color: #fff;
   text-shadow: 0 0 80px rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.05em;
+}
+
+.hero-logo-inline {
+  height: 0.85em;
+  width: auto;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 80px rgba(255, 255, 255, 0.15));
 }
 
 .hero-subtitle {
@@ -55,9 +67,11 @@
   border-radius: 999px;
   color: #fff;
   text-decoration: none;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.2rem;
-  letter-spacing: 0.2em;
+  /* BBH Barte → swap font-family when you add the @font-face */
+  font-family: 'Barlow Condensed', 'Bebas Neue', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.22em;
   transition: background 0.3s, transform 0.2s, border-color 0.3s;
 }
 

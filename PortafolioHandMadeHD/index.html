@@ -8,11 +8,15 @@
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts: Bebas Neue + Inter -->
+  <!-- Google Fonts: Bebas Neue + Inter + Barlow Condensed (START btn) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Free -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- CSS modular -->
+  <link rel="stylesheet" href="css/intro.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/about.css">
@@ -21,6 +25,41 @@
   <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
+
+  <!-- ══ INTRO OVERLAY ══ -->
+  <div id="intro-overlay">
+
+    <!-- Frame 1: ECG line + white logo -->
+    <div class="if" id="if-ecg">
+      <svg id="ecg-svg" xmlns="http://www.w3.org/2000/svg">
+        <path id="ecg-path" class="ecg-line" d=""/>
+      </svg>
+      <img src="img/LogoHDWhite.png" alt="HD" class="if-logo">
+    </div>
+
+    <!-- Frame 2: Blob + black logo -->
+    <div class="if" id="if-blob">
+      <div class="blob-shape"></div>
+      <img src="img/LogoHDBlack.png" alt="HD" class="if-logo if-logo--black">
+    </div>
+
+    <!-- Frame 3: Torn paper + white logo -->
+    <div class="if" id="if-torn">
+      <div class="torn-white"></div>
+      <img src="img/LogoHDWhite.png" alt="HD" class="if-logo if-logo--white">
+    </div>
+
+    <!-- Frame 4: White bg + big black logo -->
+    <div class="if bg-white" id="if-big">
+      <img src="img/LogoHDBlack.png" alt="HD" class="if-logo if-logo--big">
+    </div>
+
+    <!-- Frame 5: Flash (controlled via JS) -->
+    <div class="if bg-black" id="if-flash"></div>
+
+    <span class="intro-skip">CLICK TO SKIP</span>
+  </div>
+  <!-- ══ END INTRO ══ -->
 
   <!-- NAV -->
   <nav id="navbar">
@@ -40,7 +79,9 @@
   <section id="hero">
     <canvas id="hero-canvas"></canvas>
     <div class="hero-content">
-      <h1 class="hero-title">ULISESHD</h1>
+      <h1 class="hero-title">
+        ULISES<img src="img/LogoHDWhite.png" alt="HD" class="hero-logo-inline">
+      </h1>
       <p class="hero-subtitle">PORTAFOLIO</p>
       <a href="#about" class="hero-cta">START &rarr;</a>
     </div>
@@ -98,13 +139,17 @@
       </div>
 
       <div class="carousel-controls">
-        <button class="prev-btn" aria-label="Anterior">&larr;</button>
+        <button class="prev-btn" aria-label="Anterior">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
         <div class="dots">
           <span class="dot active"></span>
           <span class="dot"></span>
           <span class="dot"></span>
         </div>
-        <button class="next-btn" aria-label="Siguiente">&rarr;</button>
+        <button class="next-btn" aria-label="Siguiente">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
       </div>
 
       <div class="certifications">
@@ -124,15 +169,32 @@
     <h2 class="section-title">SERVICES</h2>
     <div class="services-grid">
       <div class="service-card glass-card service-main">
-        <h3>WEB PAGES</h3>
-        <button class="open-btn">OPEN &#x2197;</button>
+        <h3><i class="fa-solid fa-globe service-icon"></i> WEB PAGES</h3>
+        <button class="open-btn">OPEN <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
       </div>
-      <div class="service-card glass-card"><h3>IA</h3><button class="icon-btn">&#x2197;</button></div>
-      <div class="service-card glass-card"><h3>DESIGN</h3><button class="icon-btn">&#x2197;</button></div>
-      <div class="service-card glass-card"><h3>DATA</h3><button class="icon-btn">&#x2197;</button></div>
-      <div class="service-card glass-card"><h3>PM</h3><button class="icon-btn">&#x2197;</button></div>
-      <div class="service-card glass-card"><h3>VIDEO</h3><button class="icon-btn">&#x2197;</button></div>
-      <div class="service-card glass-card service-wide"><h3>LIDERSHIP</h3></div>
+      <div class="service-card glass-card">
+        <h3><i class="fa-solid fa-robot service-icon"></i> IA</h3>
+        <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+      </div>
+      <div class="service-card glass-card">
+        <h3><i class="fa-solid fa-pen-ruler service-icon"></i> DESIGN</h3>
+        <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+      </div>
+      <div class="service-card glass-card">
+        <h3><i class="fa-solid fa-chart-simple service-icon"></i> DATA</h3>
+        <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+      </div>
+      <div class="service-card glass-card">
+        <h3><i class="fa-solid fa-clipboard-list service-icon"></i> PM</h3>
+        <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+      </div>
+      <div class="service-card glass-card">
+        <h3><i class="fa-solid fa-video service-icon"></i> VIDEO</h3>
+        <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+      </div>
+      <div class="service-card glass-card service-wide">
+        <h3><i class="fa-solid fa-users service-icon"></i> LIDERSHIP</h3>
+      </div>
     </div>
   </section>
 
@@ -141,7 +203,9 @@
     <h2 class="section-title">CONTACT</h2>
     <div class="contact-container glass-card">
       <p>¿Tienes un proyecto en mente? Hablemos.</p>
-      <a href="mailto:ulises.hd06@gmail.com" class="contact-cta">ulises.hd06@gmail.com</a>
+      <a href="mailto:ulises.hd06@gmail.com" class="contact-cta">
+        <i class="fa-solid fa-envelope"></i> ulises.hd06@gmail.com
+      </a>
     </div>
   </section>
 
@@ -149,7 +213,7 @@
   <section id="future">
     <div class="future-container glass-card">
       <h2 class="section-title">PRÓXIMAMENTE</h2>
-      <p>Más contenido en camino...</p>
+      <p><i class="fa-solid fa-clock"></i> Más contenido en camino...</p>
     </div>
   </section>
 
@@ -160,7 +224,9 @@
 
   <!-- Three.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-  <!-- Scripts -->
+  <!-- Intro primero -->
+  <script src="js/intro.js"></script>
+  <!-- Scripts principales -->
   <script src="js/hero.js"></script>
   <script src="js/scroll.js"></script>
   <script src="js/main.js"></script>
