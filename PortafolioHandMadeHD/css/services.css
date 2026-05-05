@@ -17,112 +17,86 @@
 
 #services > h2 { margin-bottom: 2.5rem; }
 
-/* ── Layout: 2 cols on desktop, stack on mobile ── */
+/* ── 3 vertical columns, compact spacing ── */
 .services-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .service-item {
-  padding: 2rem;
+  padding: 1.75rem 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 0.8rem;
-  min-height: 220px;
-  transition: transform 0.3s, background 0.3s;
+  align-items: flex-start;
+  gap: 0.85rem;
+  min-height: 320px;
   text-decoration: none;
   color: inherit;
+  transition: transform 0.3s, background 0.3s;
 }
 
 .service-item:hover {
   transform: translateY(-5px);
   background:
     linear-gradient(180deg,
-      rgba(255, 255, 255, 0.14) 0%,
-      rgba(255, 255, 255, 0.05) 100%);
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.06) 100%);
 }
 
 .service-big-icon {
-  font-size: 2rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 0.25rem;
+  position: relative;
+  z-index: 2;
+  font-size: 2.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
 }
 
 .service-item h3 {
+  position: relative;
+  z-index: 2;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
   letter-spacing: 0.05em;
   color: #fff;
 }
 
 .service-item p {
-  font-size: 0.85rem;
+  position: relative;
+  z-index: 2;
+  font-size: 0.82rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.65);
-  max-width: 38ch;
-}
-
-/* "MI CONTACTO" — anchor card */
-.service-link {
-  cursor: pointer;
-  position: relative;
-}
-
-.service-link::after {
-  content: '\f061'; /* fa-arrow-right */
-  font-family: 'Font Awesome 6 Free';
-  font-weight: 900;
-  position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.85rem;
-  transition: transform 0.25s, color 0.25s;
-}
-
-.service-link:hover::after {
-  color: #fff;
-  transform: translateX(4px);
-}
-
-/* ── COTIZACIONES (highlighted card) ── */
-.service-quote {
-  grid-column: 1 / -1;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  background:
-    linear-gradient(135deg,
-      rgba(255, 255, 255, 0.14) 0%,
-      rgba(255, 255, 255, 0.05) 100%);
-  min-height: 180px;
-}
-
-.service-quote > div {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
   flex: 1;
 }
 
-.service-quote p { max-width: 50ch; }
+/* ── COTIZACIONES card with SOLICITAR button (white pill, START style) ── */
+.service-quote {
+  background:
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.05) 100%);
+}
 
 .quote-btn {
+  position: relative;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 1rem 2rem;
+  margin-top: 0.5rem;
+  padding: 0.85rem 2rem;
   background: #fff;
   color: #000;
   border-radius: 999px;
   text-decoration: none;
   font-family: 'BBH Bartle', 'Bebas Neue', sans-serif;
-  font-size: 1rem;
+  font-size: 0.95rem;
   letter-spacing: 0.18em;
   flex-shrink: 0;
+  align-self: flex-start;
   transition: transform 0.2s, box-shadow 0.25s;
   box-shadow:
     0 4px 12px rgba(255, 255, 255, 0.15),
@@ -136,11 +110,7 @@
     0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-@media (max-width: 768px) {
-  .services-list { grid-template-columns: 1fr; }
-  .service-quote {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
-  }
+@media (max-width: 900px) {
+  .services-list { grid-template-columns: 1fr; gap: 0.75rem; }
+  .service-item  { min-height: auto; }
 }

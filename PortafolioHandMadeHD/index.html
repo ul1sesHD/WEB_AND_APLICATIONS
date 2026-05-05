@@ -40,13 +40,13 @@
   <!-- NAV -->
   <nav id="navbar">
     <div class="nav-container">
-      <a href="#hero" class="nav-logo">
+      <a href="#" class="nav-logo" data-view="home">
         <img src="img/LogoHDWhite.png" alt="HD" class="logo-img">
       </a>
       <div class="nav-pill">
-        <a href="#about">SOBRE MI</a>
-        <a href="#projects">PROJECTS</a>
-        <a href="#services">SERVICES</a>
+        <a href="#" data-view="home">SOBRE MI</a>
+        <a href="#" data-view="projects">PROJECTS</a>
+        <a href="#" data-view="services">SERVICES</a>
       </div>
     </div>
   </nav>
@@ -59,9 +59,8 @@
         ULISES<img src="img/LogoHDWhite.png" alt="HD" class="hero-logo-inline">
       </h1>
       <p class="hero-subtitle hero-reveal" style="--d:180ms">PORTAFOLIO</p>
-      <!--Start con arrow black grande-->
-      <a href="#about" class="hero-cta hero-reveal" style="--d:360ms">
-        START <i class="fa-solid fa-arrow-right" style=""></i>
+      <a href="#" class="hero-cta hero-reveal" id="hero-start" style="--d:360ms">
+        START <i class="fa-solid fa-arrow-right"></i>
       </a>
     </div>
   </section>
@@ -80,40 +79,55 @@
     <div class="about-banner glass-card">CREATIVO</div>
   </section>
 
-  <!-- ══ PROJECTS (categories + detail drill-down) ══ -->
+  <!-- ══ PROJECTS (categories + detail) ══ -->
   <section id="projects">
 
     <!-- Vista 1: categorías -->
     <div class="projects-categories" id="projects-categories">
       <h2 class="section-title">PROJECTS</h2>
       <div class="categories-grid">
+
         <div class="category-card glass-card category-main" data-cat-go="web">
-          <h3><i class="fa-solid fa-globe service-icon"></i> WEB PAGES</h3>
+          <i class="fa-solid fa-globe category-bg-icon"></i>
+          <h3>WEB PAGES</h3>
           <button class="open-btn">OPEN <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
         </div>
+
         <div class="category-card glass-card" data-cat-go="ia">
-          <h3><i class="fa-solid fa-robot service-icon"></i> IA</h3>
+          <i class="fa-solid fa-robot category-bg-icon"></i>
+          <h3>IA</h3>
           <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
         </div>
+
         <div class="category-card glass-card" data-cat-go="design">
-          <h3><i class="fa-solid fa-pen-ruler service-icon"></i> DESIGN</h3>
+          <i class="fa-solid fa-pen-ruler category-bg-icon"></i>
+          <h3>DESIGN</h3>
           <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
         </div>
+
         <div class="category-card glass-card" data-cat-go="data">
-          <h3><i class="fa-solid fa-chart-simple service-icon"></i> DATA</h3>
+          <i class="fa-solid fa-chart-simple category-bg-icon"></i>
+          <h3>DATA</h3>
           <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
         </div>
+
         <div class="category-card glass-card" data-cat-go="pm">
-          <h3><i class="fa-solid fa-clipboard-list service-icon"></i> PM</h3>
+          <i class="fa-solid fa-clipboard-list category-bg-icon"></i>
+          <h3>PM</h3>
           <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
         </div>
+
         <div class="category-card glass-card" data-cat-go="video">
-          <h3><i class="fa-solid fa-video service-icon"></i> VIDEO</h3>
+          <i class="fa-solid fa-video category-bg-icon"></i>
+          <h3>VIDEO</h3>
           <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
         </div>
+
         <div class="category-card glass-card category-wide" data-cat-go="lidership">
-          <h3><i class="fa-solid fa-users service-icon"></i> LIDERSHIP</h3>
+          <i class="fa-solid fa-users category-bg-icon"></i>
+          <h3>LIDERSHIP</h3>
         </div>
+
       </div>
     </div>
 
@@ -197,35 +211,30 @@
         <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Inteligencia Artificial...</p>
       </article>
 
-      <!-- DESIGN -->
       <article class="projects-detail" data-cat="design">
         <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
         <h2 class="section-title">DESIGN</h2>
         <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Diseño...</p>
       </article>
 
-      <!-- DATA -->
       <article class="projects-detail" data-cat="data">
         <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
         <h2 class="section-title">DATA</h2>
         <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Análisis de Datos...</p>
       </article>
 
-      <!-- PM -->
       <article class="projects-detail" data-cat="pm">
         <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
         <h2 class="section-title">PROJECT MANAGEMENT</h2>
         <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Project Management...</p>
       </article>
 
-      <!-- VIDEO -->
       <article class="projects-detail" data-cat="video">
         <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
         <h2 class="section-title">VIDEO</h2>
         <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Video y Producción...</p>
       </article>
 
-      <!-- LIDERSHIP -->
       <article class="projects-detail" data-cat="lidership">
         <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
         <h2 class="section-title">LIDERSHIP</h2>
@@ -235,7 +244,7 @@
     </div>
   </section>
 
-  <!-- ══ SERVICES (Landing / Web / Contacto / Cotizaciones) ══ -->
+  <!-- ══ SERVICES (3 columnas verticales) ══ -->
   <section id="services">
     <h2 class="section-title">SERVICES</h2>
     <div class="services-list">
@@ -252,18 +261,10 @@
         <p>Desarrollo de sitios completos, responsive y optimizados para SEO y rendimiento.</p>
       </div>
 
-      <a href="#contact" class="service-item glass-card service-link">
-        <i class="fa-solid fa-envelope service-big-icon"></i>
-        <h3>MI CONTACTO</h3>
-        <p>¿Tienes una pregunta? Escríbeme directamente y te respondo en 24h.</p>
-      </a>
-
       <div class="service-item glass-card service-quote">
-        <div>
-          <i class="fa-solid fa-file-invoice-dollar service-big-icon"></i>
-          <h3>COTIZACIONES</h3>
-          <p>Solicita una cotización personalizada según el alcance de tu proyecto.</p>
-        </div>
+        <i class="fa-solid fa-file-invoice-dollar service-big-icon"></i>
+        <h3>COTIZACIONES</h3>
+        <p>Solicita una cotización personalizada según el alcance de tu proyecto.</p>
         <a href="mailto:ulises.hd06@gmail.com?subject=Cotización%20de%20Proyecto" class="quote-btn">
           SOLICITAR <i class="fa-solid fa-arrow-right"></i>
         </a>
@@ -272,7 +273,7 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT (visible en services view) -->
   <section id="contact">
     <h2 class="section-title">CONTACT</h2>
     <div class="contact-container glass-card">
@@ -280,14 +281,6 @@
       <a href="mailto:ulises.hd06@gmail.com" class="contact-cta">
         <i class="fa-solid fa-envelope"></i> ulises.hd06@gmail.com
       </a>
-    </div>
-  </section>
-
-  <!-- FUTURE -->
-  <section id="future">
-    <div class="future-container glass-card">
-      <h2 class="section-title">PRÓXIMAMENTE</h2>
-      <p><i class="fa-solid fa-clock"></i> Más contenido en camino...</p>
     </div>
   </section>
 
@@ -300,6 +293,7 @@
   <script src="js/hero.js"></script>
   <script src="js/scroll.js"></script>
   <script src="js/projects.js"></script>
+  <script src="js/nav.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

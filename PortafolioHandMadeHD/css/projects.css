@@ -33,31 +33,72 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  min-height: 110px;
+  min-height: 130px;
   cursor: pointer;
-  transition: background 0.25s, transform 0.25s;
+  overflow: hidden;
+  transition: background 0.3s, transform 0.3s;
 }
 
 .category-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   background:
     linear-gradient(180deg,
-      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.18) 0%,
       rgba(255, 255, 255, 0.06) 100%);
 }
 
 .category-card h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-  letter-spacing: 0.06em;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
   position: relative;
   z-index: 2;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  letter-spacing: 0.06em;
 }
 
-.service-icon { font-size: 0.85em; opacity: 0.75; }
+/* ── Big translucent reflective crystal icon ── */
+.category-bg-icon {
+  position: absolute;
+  font-size: 6em;
+  bottom: -0.4rem;
+  right: -0.3rem;
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.08) 35%,
+    rgba(255, 255, 255, 0.40) 60%,
+    rgba(255, 255, 255, 0.05) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 16px rgba(255, 255, 255, 0.10))
+          drop-shadow(0 0 1px rgba(255, 255, 255, 0.2));
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+  transform: rotate(-12deg);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s;
+}
+
+.category-card:hover .category-bg-icon {
+  transform: rotate(-12deg) scale(1.18) translate(-4px, -4px);
+  opacity: 1;
+}
+
+.category-main .category-bg-icon {
+  font-size: 14em;
+  bottom: -1rem;
+  right: -1rem;
+}
+
+.category-wide .category-bg-icon {
+  font-size: 5em;
+  right: 2rem;
+  bottom: 50%;
+  transform: translateY(50%) rotate(-12deg);
+}
+
+.category-wide:hover .category-bg-icon {
+  transform: translateY(50%) rotate(-12deg) scale(1.15);
+}
 
 .category-main {
   grid-column: 1;
