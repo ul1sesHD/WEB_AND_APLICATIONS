@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat)",
+      "Read(//c/Users/Ulises/.claude/plans/**)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(gh --version)",
+      "PowerShell(gh --version)",
+      "Bash(git push *)"
+    ]
+  }
+}

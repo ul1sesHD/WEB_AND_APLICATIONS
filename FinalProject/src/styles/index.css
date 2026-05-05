@@ -1,0 +1,22 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+@import 'leaflet/dist/leaflet.css';
+
+/* Estilos globales de Barrio Vivo */
+body {
+  background: #FFF8EE;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Fix de z-index para popups de Leaflet */
+.leaflet-popup-content-wrapper {
+  border-radius: 6px !important;
+  border: 1.5px solid rgba(62,39,35,0.15) !important;
+  background: #FFF8EE !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}
+
+.leaflet-popup-tip {
+  background: #FFF8EE !important;
+}

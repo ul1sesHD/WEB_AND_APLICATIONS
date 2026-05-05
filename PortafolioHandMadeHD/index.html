@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UlisesHD | Portafolio</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Bebas Neue + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS modular -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <img src="img/LogoHDWhite.png" alt="HD" class="logo-img">
+      </a>
+      <div class="nav-pill">
+        <a href="#about">SOBRE MI</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#services">SERVICES</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+      <h1 class="hero-title">ULISESHD</h1>
+      <p class="hero-subtitle">PORTAFOLIO</p>
+      <a href="#about" class="hero-cta">START &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-container">
+      <div class="about-text">
+        <h2 class="section-title">SOBRE MI</h2>
+        <p>¡Hola! Soy H. Ulises Hernandez Dominguez, Ing. en sistemas, fungiendo como desarrollador y manager de proyectos Full Stack, combino conocimiento técnico, liderazgo y pasión, mi fuerte, crear soluciones escalables que prioricen tanto lo técnico como la responsabilidad social.</p>
+      </div>
+      <div class="about-avatar">
+        <img src="img/me_avatarpng.png" alt="UlisesHD Avatar">
+      </div>
+    </div>
+    <div class="about-banner">CREATIVO</div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">PROJECTS</h2>
+    <div class="projects-layout">
+      <div class="projects-carousel-wrapper">
+        <div class="project-card glass-card">
+          <div class="project-img" style="background:#8B0000;"></div>
+          <div class="project-info">
+            <h3>Universidad La Salle México | Página del Estudiante</h3>
+            <p>Desarrollo de plataforma web para gestión y seguimiento de alumnos con módulos de servicios académicos.</p>
+            <div class="project-tags">
+              <span>PHP</span><span>HTML</span><span>CSS</span><span>FIGMA</span><span>SQL</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card glass-card">
+          <div class="project-img" style="background:#1a1a2e;"></div>
+          <div class="project-info">
+            <h3>Proyecto Placeholder 2</h3>
+            <p>Descripción del segundo proyecto. Lorem ipsum placeholder text.</p>
+            <div class="project-tags">
+              <span>React</span><span>Node.js</span><span>MongoDB</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card glass-card">
+          <div class="project-img" style="background:#0d2137;"></div>
+          <div class="project-info">
+            <h3>Proyecto Placeholder 3</h3>
+            <p>Descripción del tercer proyecto. Lorem ipsum placeholder text.</p>
+            <div class="project-tags">
+              <span>Python</span><span>FastAPI</span><span>PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="prev-btn" aria-label="Anterior">&larr;</button>
+        <div class="dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <button class="next-btn" aria-label="Siguiente">&rarr;</button>
+      </div>
+
+      <div class="certifications">
+        <h3>CERTIFICACIONES</h3>
+        <div class="cert-list">
+          <div class="cert-item glass-card"></div>
+          <div class="cert-item glass-card"></div>
+          <div class="cert-item glass-card"></div>
+          <div class="cert-item glass-card"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2 class="section-title">SERVICES</h2>
+    <div class="services-grid">
+      <div class="service-card glass-card service-main">
+        <h3>WEB PAGES</h3>
+        <button class="open-btn">OPEN &#x2197;</button>
+      </div>
+      <div class="service-card glass-card"><h3>IA</h3><button class="icon-btn">&#x2197;</button></div>
+      <div class="service-card glass-card"><h3>DESIGN</h3><button class="icon-btn">&#x2197;</button></div>
+      <div class="service-card glass-card"><h3>DATA</h3><button class="icon-btn">&#x2197;</button></div>
+      <div class="service-card glass-card"><h3>PM</h3><button class="icon-btn">&#x2197;</button></div>
+      <div class="service-card glass-card"><h3>VIDEO</h3><button class="icon-btn">&#x2197;</button></div>
+      <div class="service-card glass-card service-wide"><h3>LIDERSHIP</h3></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">CONTACT</h2>
+    <div class="contact-container glass-card">
+      <p>¿Tienes un proyecto en mente? Hablemos.</p>
+      <a href="mailto:ulises.hd06@gmail.com" class="contact-cta">ulises.hd06@gmail.com</a>
+    </div>
+  </section>
+
+  <!-- FUTURE -->
+  <section id="future">
+    <div class="future-container glass-card">
+      <h2 class="section-title">PRÓXIMAMENTE</h2>
+      <p>Más contenido en camino...</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 UlisesHD &mdash; Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <!-- Scripts -->
+  <script src="js/hero.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+C:\Users\Ulises\Downloads\demo\demo>
+mvnw spring-boot:run
+
+
+my-frontend/src/App.jsx
+npm run dev
+
+
+Hot Module Replacement o HMR
+
+import { useState } from 'react';
+
+function App() {
+  const [serverMessage, setServerMessage] = useState("Waiting for connection...");
+
+  const connectToBrain = () => {
+    // Update UI to show loading state
+    setServerMessage("Calling port 8080... ⏳");
+
+    // THE HTTP BRIDGE (Asynchronous fetch request to the REST API)
+    fetch("http://localhost:8080/api/saludo")
+      .then(response => {
+        // Check if the HTTP status code is OK (200)
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        // Unpack the JSON payload from the backend
+        return response.json(); 
+      })
+      .then(data => {
+        // 4. UI UPDATE (Mutating state with the received data)
+        // Note: 'mensaje' is the exact key we sent from the Java HashMap
+        setServerMessage(data.mensaje); 
+      })
+      .catch(error => {
+        console.error("System failure:", error);
+        setServerMessage("Error: The Java server is offline ❌");
+      });
+  };
+
+  return (
+    <div style={{ textAlign: 'center', marginTop: '100px', fontFamily: 'sans-serif' }}>
+      <h1 style={{ color: '#61dafb' }}>Uli and Ale Control Panel ✨</h1>
+      
+      {/* THE ACTION BUTTON */}
+      <button 
+        onClick={connectToBrain} 
+        style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer', borderRadius: '5px' }}>
+        Test Connection with Spring Boot
+      </button>
+      
+      {/* THE DISPLAY SCREEN */}
+      <p style={{ marginTop: '20px', fontSize: '20px', fontWeight: 'bold' }}>
+        {serverMessage}
+      </p>
+    </div>
+  );
+}
+
+export default App;

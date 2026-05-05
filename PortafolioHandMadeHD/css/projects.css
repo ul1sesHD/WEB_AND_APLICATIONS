@@ -1,0 +1,142 @@
+#projects { background: #000; }
+
+#projects > h2 { margin-bottom: 2.5rem; }
+
+.projects-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  grid-template-rows: 1fr auto;
+  gap: 1.5rem 2rem;
+  align-items: start;
+}
+
+/* Carousel */
+.projects-carousel-wrapper {
+  grid-column: 1;
+  grid-row: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-card {
+  padding: 1.5rem;
+  display: none;
+}
+
+.project-card.active { display: block; }
+
+.project-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+}
+
+.project-info h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
+}
+
+.project-info p {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-tags span {
+  padding: 0.3rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+/* Controls */
+.carousel-controls {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.25rem;
+}
+
+.prev-btn, .next-btn {
+  padding: 0.5rem 1.75rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.prev-btn:hover, .next-btn:hover { background: rgba(255, 255, 255, 0.14); }
+
+.dots { display: flex; gap: 0.5rem; align-items: center; }
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+  transition: background 0.2s;
+}
+
+.dot.active { background: #fff; }
+
+/* Certifications */
+.certifications {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+
+.certifications > h3 {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.cert-item {
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 768px) {
+  .projects-layout {
+    grid-template-columns: 1fr;
+  }
+  .certifications {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .cert-list {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0.75rem;
+  }
+  .cert-item { min-width: 130px; flex-shrink: 0; }
+}
