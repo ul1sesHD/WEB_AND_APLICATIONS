@@ -1,0 +1,116 @@
+#services {
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+#services::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../img/carpetGlass.jpg') center / cover no-repeat;
+  opacity: 0.10;
+  z-index: 0;
+}
+
+#services > * { position: relative; z-index: 1; }
+
+#services > h2 { margin-bottom: 2.5rem; }
+
+/* ── 3 vertical columns, compact spacing ── */
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.service-item {
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  min-height: 320px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.06) 100%);
+}
+
+.service-big-icon {
+  position: relative;
+  z-index: 2;
+  font-size: 2.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
+}
+
+.service-item h3 {
+  position: relative;
+  z-index: 2;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+.service-item p {
+  position: relative;
+  z-index: 2;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  flex: 1;
+}
+
+/* ── COTIZACIONES card with SOLICITAR button (white pill, START style) ── */
+.service-quote {
+  background:
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.05) 100%);
+}
+
+.quote-btn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  padding: 0.85rem 2rem;
+  background: #fff;
+  color: #000;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: 'BBH Bartle', 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  flex-shrink: 0;
+  align-self: flex-start;
+  transition: transform 0.2s, box-shadow 0.25s;
+  box-shadow:
+    0 4px 12px rgba(255, 255, 255, 0.15),
+    0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.quote-btn:hover {
+  transform: scale(1.04);
+  box-shadow:
+    0 8px 24px rgba(255, 255, 255, 0.25),
+    0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 900px) {
+  .services-list { grid-template-columns: 1fr; gap: 0.75rem; }
+  .service-item  { min-height: auto; }
+}

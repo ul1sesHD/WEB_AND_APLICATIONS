@@ -1,0 +1,59 @@
+#about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #000;
+  gap: 3rem;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-text h2 { margin-bottom: 1.5rem; }
+
+.about-text p {
+  font-size: clamp(0.875rem, 1.4vw, 1rem);
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 48ch;
+}
+
+.about-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.about-avatar img {
+  max-height: 60vh;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.06));
+}
+
+.about-banner {
+  font-family: 'BBH Bartle', 'Bebas Neue', sans-serif;
+  font-size: 5rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 0.6rem 2rem;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+  .about-text p { max-width: 100%; margin: 0 auto; }
+  .about-avatar img { max-height: 45vh; }
+}
