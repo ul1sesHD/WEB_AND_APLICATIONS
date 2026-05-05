@@ -5,87 +5,109 @@
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setClearColor(0x000000, 1);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.3;
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
-  camera.position.z = 9;
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(52, 1, 0.1, 100);
+  camera.position.set(0, 0, 11);
 
-  // Lighting
+  /* ── Lighting for glass shine ── */
   scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-  const dir = new THREE.DirectionalLight(0xffffff, 2);
-  dir.position.set(5, 5, 5);
-  scene.add(dir);
-  const rim = new THREE.PointLight(0xaaaaff, 3, 25);
-  rim.position.set(-6, -3, 3);
+
+  const key = new THREE.DirectionalLight(0xffffff, 3.5);
+  key.position.set(6, 8, 6);
+  scene.add(key);
+
+  const fill = new THREE.PointLight(0xbbbbff, 2.5, 30);
+  fill.position.set(-7, -4, 4);
+  scene.add(fill);
+
+  const rim = new THREE.PointLight(0xffffff, 2, 20);
+  rim.position.set(0, 0, -6);
   scene.add(rim);
 
-  const mat = new THREE.MeshPhysicalMaterial({
-    color: 0xcccccc,
-    metalness: 0.15,
-    roughness: 0.05,
-    transmission: 0.88,
-    thickness: 0.6,
-    transparent: true,
-    opacity: 0.75,
+  /* ── Glass material ── */
+  const glassMat = new THREE.MeshPhysicalMaterial({
+    color:             0xffffff,
+    metalness:         0.0,
+    roughness:         0.02,
+    transmission:      0.92,
+    thickness:         0.55,
+    ior:               1.65,
+    transparent:       true,
+    opacity:           0.85,
+    envMapIntensity:   1.8,
   });
 
-  // Chain links: alternating rotated tori
-  const geo = new THREE.TorusGeometry(0.55, 0.13, 16, 48);
-  const links = [];
-  const positions = [
-    [-2.5, 1.5, 0], [-1.5, 0.3, -1], [-0.4, 1.2, 0.5],
-    [0.8, -0.5, -0.5], [2, 0.8, 0], [3, -1, 1],
-    [-3.5, -1, 0.5], [1.5, -2, -0.5],
-  ];
+  /* ── Chain ring ──
+     N torus links arranged in a circle.
+     Adjacent links alternate 90° to interlock like a real chain.
+  ── */
+  const chainGroup = new THREE.Group();
+  const N          = 14;    // number of links
+  const ringR      = 4.0;   // radius of the circular chain
+  const linkR      = 0.52;  // torus major radius
+  const tube       = 0.12;  // torus tube radius
 
-  positions.forEach((pos, i) => {
-    const mesh = new THREE.Mesh(geo, mat);
-    mesh.position.set(...pos);
-    mesh.rotation.set(
-      Math.random() * Math.PI,
-      Math.random() * Math.PI,
-      i % 2 === 0 ? 0 : Math.PI / 2
-    );
-    const s = 0.7 + Math.random() * 0.9;
-    mesh.scale.setScalar(s);
-    links.push({ mesh, vy: 0.001 + Math.random() * 0.002, rx: 0.003 + Math.random() * 0.004, offset: Math.random() * Math.PI * 2 });
-    scene.add(mesh);
-  });
+  const zAxis = new THREE.Vector3(0, 0, 1);
 
-  let mouseX = 0, mouseY = 0;
+  for (let i = 0; i < N; i++) {
+    const angle = (i / N) * Math.PI * 2;
+    const geo   = new THREE.TorusGeometry(linkR, tube, 14, 72);
+    const mesh  = new THREE.Mesh(geo, glassMat);
+
+    // Position link on the ring
+    mesh.position.x = Math.cos(angle) * ringR;
+    mesh.position.y = Math.sin(angle) * ringR;
+
+    // Tangent direction at this point on the circle
+    const tangent = new THREE.Vector3(-Math.sin(angle), Math.cos(angle), 0).normalize();
+
+    // Default torus hole faces +Z — reorient hole to face tangent
+    mesh.quaternion.setFromUnitVectors(zAxis, tangent);
+
+    // Every other link: tilt 90° around tangent (chain interlocking)
+    if (i % 2 === 0) {
+      const tilt = new THREE.Quaternion().setFromAxisAngle(tangent, Math.PI / 2);
+      mesh.quaternion.premultiply(tilt);
+    }
+
+    chainGroup.add(mesh);
+  }
+
+  scene.add(chainGroup);
+
+  /* ── Mouse parallax ── */
+  let mx = 0, my = 0;
   window.addEventListener('mousemove', e => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-  });
+    mx = (e.clientX / window.innerWidth  - 0.5) * 2;
+    my = (e.clientY / window.innerHeight - 0.5) * 2;
+  }, { passive: true });
 
   function resize() {
-    const w = canvas.parentElement.clientWidth;
-    const h = canvas.parentElement.clientHeight;
+    const w = canvas.parentElement?.clientWidth  || window.innerWidth;
+    const h = canvas.parentElement?.clientHeight || window.innerHeight;
     renderer.setSize(w, h);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
   }
-
   window.addEventListener('resize', resize);
   resize();
 
-  let t = 0;
-  function animate() {
-    requestAnimationFrame(animate);
-    t += 0.008;
+  /* ── Animate ── */
+  function tick() {
+    requestAnimationFrame(tick);
 
-    links.forEach(({ mesh, vy, rx, offset }) => {
-      mesh.rotation.x += rx;
-      mesh.rotation.y += rx * 0.65;
-      mesh.position.y += Math.sin(t + offset) * vy;
-    });
+    // Very slow 360° rotation on its own axis (Z)
+    chainGroup.rotation.z += 0.0012;
 
-    camera.position.x += (mouseX * 0.6 - camera.position.x) * 0.04;
-    camera.position.y += (-mouseY * 0.4 - camera.position.y) * 0.04;
+    // Subtle mouse parallax on camera
+    camera.position.x += (mx * 0.7 - camera.position.x) * 0.035;
+    camera.position.y += (-my * 0.4 - camera.position.y) * 0.035;
     camera.lookAt(scene.position);
 
     renderer.render(scene, camera);
   }
-
-  animate();
+  tick();
 })();

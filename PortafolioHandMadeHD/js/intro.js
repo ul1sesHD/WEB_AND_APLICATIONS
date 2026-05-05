@@ -1,91 +1,189 @@
 (function () {
-  const overlay = document.getElementById('intro-overlay');
+  const overlay   = document.getElementById('intro-overlay');
   if (!overlay) return;
 
   document.body.style.overflow = 'hidden';
 
-  const ifEcg   = document.getElementById('if-ecg');
-  const ifBlob  = document.getElementById('if-blob');
-  const ifTorn  = document.getElementById('if-torn');
-  const ifBig   = document.getElementById('if-big');
-  const ifFlash = document.getElementById('if-flash');
+  const canvas    = document.getElementById('intro-canvas');
+  const ctx       = canvas.getContext('2d');
+  const logoWrap  = document.getElementById('intro-logo-wrap');
+  const logoImg   = document.getElementById('intro-logo-img');
+  const bigLogo   = document.getElementById('intro-big-logo');
+  const bigImg    = document.getElementById('intro-big-img');
 
-  // Draw ECG path dynamically on the SVG
-  function buildEcgPath() {
-    const svg = document.getElementById('ecg-svg');
-    if (!svg) return;
-    const W = window.innerWidth;
-    const H = window.innerHeight;
-    const cy = H / 2;
-    const left = W * 0.1;
-    const right = W * 0.9;
-    const span = right - left;
+  let W, H, crack;
 
-    // Normalized x positions and y deflections
-    const beats = [
-      [0, 0], [0.28, 0], [0.33, -H * 0.12], [0.36, H * 0.22],
-      [0.40, -H * 0.35], [0.43, H * 0.12], [0.46, 0],
-      [0.72, 0], [1, 0]
-    ];
-
-    const pts = beats.map(([nx, dy]) => `${left + nx * span},${cy + dy}`).join(' L ');
-    const path = document.getElementById('ecg-path');
-    if (path) {
-      path.setAttribute('d', `M ${pts}`);
-      // Reset animation
-      path.classList.remove('ecg-line');
-      void path.offsetWidth;
-      path.classList.add('ecg-line');
+  /* ── Generate rough hand-made crack ── */
+  function makeCrack() {
+    const pts = [];
+    const n = 36;
+    for (let i = 0; i <= n; i++) {
+      const t = i / n;
+      // More jagged near center, smoother at edges
+      const jitter = (Math.random() - 0.5) * H * 0.038 * Math.sin(t * Math.PI);
+      pts.push({ x: t * W, y: H / 2 + jitter });
     }
+    return pts;
   }
 
-  function showOnly(el) {
-    [ifEcg, ifBlob, ifTorn, ifBig, ifFlash].forEach(f => {
-      if (f) f.classList.remove('active');
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    crack = makeCrack();
+  }
+  resize();
+  window.addEventListener('resize', () => { resize(); redraw(); });
+
+  let currentGap = 0;
+  function redraw() { draw(currentGap); }
+
+  /* ── Draw helper: two black panels leaving a gap ── */
+  function draw(gapPx) {
+    ctx.clearRect(0, 0, W, H);
+
+    if (gapPx <= 0) {
+      // Solid black + thin crack line
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, W, H);
+      drawCrackLine(0);
+      return;
+    }
+
+    // Top black panel (above crack, shifted up by gapPx)
+    ctx.fillStyle = '#000';
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(W, 0);
+    for (let i = crack.length - 1; i >= 0; i--) {
+      ctx.lineTo(crack[i].x, crack[i].y - gapPx);
+    }
+    ctx.closePath();
+    ctx.fill();
+
+    // Bottom black panel (below crack, shifted down by gapPx)
+    ctx.beginPath();
+    ctx.moveTo(0, H);
+    ctx.lineTo(W, H);
+    for (let i = crack.length - 1; i >= 0; i--) {
+      ctx.lineTo(crack[i].x, crack[i].y + gapPx);
+    }
+    ctx.closePath();
+    ctx.fill();
+
+    // Glowing crack edges
+    drawCrackLine(-gapPx);
+    drawCrackLine(+gapPx);
+  }
+
+  function drawCrackLine(offsetY) {
+    ctx.save();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 1.2;
+    ctx.shadowColor = 'rgba(255,255,255,0.7)';
+    ctx.shadowBlur = 5;
+    ctx.lineCap  = 'round';
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    crack.forEach((p, i) => {
+      if (i === 0) ctx.moveTo(p.x, p.y + offsetY);
+      else         ctx.lineTo(p.x, p.y + offsetY);
     });
-    if (el) el.classList.add('active');
+    ctx.stroke();
+    ctx.restore();
   }
 
-  function finish() {
+  /* ── Circle helpers ── */
+  function showCircle(scale, logoSrc) {
+    logoWrap.style.display = 'flex';
+    logoWrap.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    logoImg.src = 'img/' + logoSrc;
+  }
+  function hideCircle() { logoWrap.style.display = 'none'; }
+
+  /* ── Big logo helpers ── */
+  function showBig(logoSrc) {
+    bigImg.style.animation = 'none';
+    void bigImg.offsetWidth; // reflow
+    bigImg.style.animation = '';
+    bigImg.src = 'img/' + logoSrc;
+    bigLogo.style.display = 'flex';
+  }
+  function hideBig() { bigLogo.style.display = 'none'; }
+
+  /* ── Overlay background ── */
+  function setBg(color, duration) {
+    overlay.style.transition = duration
+      ? `background ${duration}ms ease`
+      : 'background 0.12s';
+    overlay.style.background = color;
+  }
+
+  /* ── Hero reveal ── */
+  function revealHero() {
+    // Kick off hero text animations
+    document.querySelectorAll('.hero-reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('revealed'), i * 180);
+    });
     overlay.classList.add('fade-out');
     document.body.style.overflow = '';
-    setTimeout(() => overlay.remove(), 520);
+    setTimeout(() => overlay.remove(), 800);
   }
 
-  // Click anywhere to skip
-  overlay.addEventListener('click', finish);
+  /* ── Sequence ── */
+  const timers = [];
+  function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
 
-  // ── Sequence ──
-  buildEcgPath();
-  showOnly(ifEcg);
+  // Moment 1 — black + crack + small circle (scale 1)
+  draw(0);
+  showCircle(1, 'LogoHDBlack.png');
+  hideBig();
+  setBg('#000', 0);
 
-  const t1 = setTimeout(() => showOnly(ifBlob), 750);
+  // Moment 2 — crack opens slightly, circle x2
+  at(700, () => {
+    currentGap = H * 0.022;
+    draw(currentGap);
+    showCircle(2, 'LogoHDBlack.png');
+    setBg('#fff');
+  });
 
-  const t2 = setTimeout(() => showOnly(ifTorn), 1200);
+  // Moment 3 — crack opens more, circle x3
+  at(1300, () => {
+    currentGap = H * 0.065;
+    draw(currentGap);
+    showCircle(3, 'LogoHDBlack.png');
+  });
 
-  const t3 = setTimeout(() => showOnly(ifBig), 1550);
+  // Moment 4 — white bg, logo fills screen (smooth 1s)
+  at(1900, () => {
+    ctx.clearRect(0, 0, W, H);
+    hideCircle();
+    showBig('LogoHDBlack.png');
+    setBg('#fff', 900);
+  });
 
-  // Flash sequence: black → white → black → white
-  let flashCount = 0;
-  const t4 = setTimeout(() => {
-    const flashTimer = setInterval(() => {
-      flashCount++;
-      ifFlash.classList.toggle('bg-black', flashCount % 2 !== 0);
-      ifFlash.classList.toggle('bg-white', flashCount % 2 === 0);
-      showOnly(ifFlash);
+  // Moment 5 — black bg, white logo
+  at(3100, () => { setBg('#000', 120); showBig('LogoHDWhite.png'); });
 
-      if (flashCount >= 6) {
-        clearInterval(flashTimer);
-        setTimeout(finish, 80);
-      }
-    }, 100);
-  }, 1850);
+  // Moment 6 — white bg, black logo
+  at(3450, () => { setBg('#fff', 120); showBig('LogoHDBlack.png'); });
 
-  // Auto-finish safety (4s max)
-  const tSafe = setTimeout(finish, 4000);
+  // Moment 7 — black bg, white logo
+  at(3800, () => { setBg('#000', 120); showBig('LogoHDWhite.png'); });
 
-  // Clean up timers on manual skip
+  // Moment 8 — pure white screen
+  at(4150, () => { hideBig(); hideCircle(); setBg('#fff', 500); });
+
+  // Moment 9 — fade out, hero reveals
+  at(4750, () => revealHero());
+
+  // Safety fallback
+  at(6000, revealHero);
+
+  // Click to skip
   overlay.addEventListener('click', () => {
-    [t1, t2, t3, t4, tSafe].forEach(clearTimeout);
+    timers.forEach(clearTimeout);
+    hideBig(); hideCircle();
+    revealHero();
   }, { once: true });
 })();

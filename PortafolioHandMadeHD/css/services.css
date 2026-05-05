@@ -9,99 +9,138 @@
   position: absolute;
   inset: 0;
   background: url('../img/carpetGlass.jpg') center / cover no-repeat;
-  opacity: 0.12;
+  opacity: 0.10;
   z-index: 0;
 }
 
 #services > * { position: relative; z-index: 1; }
 
-#services > h2 { margin-bottom: 2rem; }
+#services > h2 { margin-bottom: 2.5rem; }
 
-.services-grid {
+/* ── Layout: 2 cols on desktop, stack on mobile ── */
+.services-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.65rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
 }
 
-.service-card {
-  padding: 1.5rem;
+.service-item {
+  padding: 2rem;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  min-height: 110px;
-  cursor: default;
-  transition: background 0.25s;
-}
-
-.service-card:hover { background: rgba(255, 255, 255, 0.1); }
-
-.service-card h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-  letter-spacing: 0.06em;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.service-icon {
-  font-size: 0.8em;
-  opacity: 0.7;
-}
-
-/* WEB PAGES: tall left card */
-.service-main {
-  grid-column: 1;
-  grid-row: 1 / 3;
-  min-height: 240px;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 0.8rem;
+  min-height: 220px;
+  transition: transform 0.3s, background 0.3s;
+  text-decoration: none;
+  color: inherit;
 }
 
-/* LIDERSHIP: full-width bottom */
-.service-wide {
+.service-item:hover {
+  transform: translateY(-5px);
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0.05) 100%);
+}
+
+.service-big-icon {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.25rem;
+}
+
+.service-item h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+.service-item p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 38ch;
+}
+
+/* "MI CONTACTO" — anchor card */
+.service-link {
+  cursor: pointer;
+  position: relative;
+}
+
+.service-link::after {
+  content: '\f061'; /* fa-arrow-right */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  transition: transform 0.25s, color 0.25s;
+}
+
+.service-link:hover::after {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/* ── COTIZACIONES (highlighted card) ── */
+.service-quote {
   grid-column: 1 / -1;
-  min-height: 80px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  background:
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0.05) 100%);
+  min-height: 180px;
 }
 
-.open-btn {
+.service-quote > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.service-quote p { max-width: 50ch; }
+
+.quote-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0.35rem 0.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  background: #fff;
+  color: #000;
   border-radius: 999px;
-  background: transparent;
-  color: #fff;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.open-btn:hover { background: rgba(255, 255, 255, 0.1); }
-
-.icon-btn {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: #fff;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-decoration: none;
+  font-family: 'BBH Bartle', 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.18em;
   flex-shrink: 0;
-  transition: background 0.2s;
+  transition: transform 0.2s, box-shadow 0.25s;
+  box-shadow:
+    0 4px 12px rgba(255, 255, 255, 0.15),
+    0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
-.icon-btn:hover { background: rgba(255, 255, 255, 0.12); }
+.quote-btn:hover {
+  transform: scale(1.04);
+  box-shadow:
+    0 8px 24px rgba(255, 255, 255, 0.25),
+    0 2px 6px rgba(0, 0, 0, 0.4);
+}
 
 @media (max-width: 768px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .service-main { grid-column: 1 / -1; grid-row: auto; min-height: 100px; }
-  .service-wide { grid-column: 1 / -1; }
+  .services-list { grid-template-columns: 1fr; }
+  .service-quote {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
 }

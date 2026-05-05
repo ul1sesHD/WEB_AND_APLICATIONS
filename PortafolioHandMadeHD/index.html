@@ -5,17 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UlisesHD | Portafolio</title>
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts: Bebas Neue + Inter + Barlow Condensed (START btn) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome 6 Free -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- CSS modular -->
   <link rel="stylesheet" href="css/intro.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/hero.css">
@@ -28,38 +25,17 @@
 
   <!-- ══ INTRO OVERLAY ══ -->
   <div id="intro-overlay">
-
-    <!-- Frame 1: ECG line + white logo -->
-    <div class="if" id="if-ecg">
-      <svg id="ecg-svg" xmlns="http://www.w3.org/2000/svg">
-        <path id="ecg-path" class="ecg-line" d=""/>
-      </svg>
-      <img src="img/LogoHDWhite.png" alt="HD" class="if-logo">
+    <canvas id="intro-canvas"></canvas>
+    <div id="intro-logo-wrap">
+      <div class="intro-circle">
+        <img id="intro-logo-img" src="img/LogoHDBlack.png" alt="HD">
+      </div>
     </div>
-
-    <!-- Frame 2: Blob + black logo -->
-    <div class="if" id="if-blob">
-      <div class="blob-shape"></div>
-      <img src="img/LogoHDBlack.png" alt="HD" class="if-logo if-logo--black">
+    <div id="intro-big-logo">
+      <img id="intro-big-img" src="img/LogoHDBlack.png" alt="HD">
     </div>
-
-    <!-- Frame 3: Torn paper + white logo -->
-    <div class="if" id="if-torn">
-      <div class="torn-white"></div>
-      <img src="img/LogoHDWhite.png" alt="HD" class="if-logo if-logo--white">
-    </div>
-
-    <!-- Frame 4: White bg + big black logo -->
-    <div class="if bg-white" id="if-big">
-      <img src="img/LogoHDBlack.png" alt="HD" class="if-logo if-logo--big">
-    </div>
-
-    <!-- Frame 5: Flash (controlled via JS) -->
-    <div class="if bg-black" id="if-flash"></div>
-
     <span class="intro-skip">CLICK TO SKIP</span>
   </div>
-  <!-- ══ END INTRO ══ -->
 
   <!-- NAV -->
   <nav id="navbar">
@@ -79,11 +55,13 @@
   <section id="hero">
     <canvas id="hero-canvas"></canvas>
     <div class="hero-content">
-      <h1 class="hero-title">
+      <h1 class="hero-title hero-reveal" style="--d:0ms">
         ULISES<img src="img/LogoHDWhite.png" alt="HD" class="hero-logo-inline">
       </h1>
-      <p class="hero-subtitle">PORTAFOLIO</p>
-      <a href="#about" class="hero-cta">START &rarr;</a>
+      <p class="hero-subtitle hero-reveal" style="--d:180ms">PORTAFOLIO</p>
+      <a href="#about" class="hero-cta hero-reveal" style="--d:360ms">
+        START <i class="fa-solid fa-arrow-right"></i>
+      </a>
     </div>
   </section>
 
@@ -101,100 +79,195 @@
     <div class="about-banner">CREATIVO</div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- ══ PROJECTS (categories + detail drill-down) ══ -->
   <section id="projects">
-    <h2 class="section-title">PROJECTS</h2>
-    <div class="projects-layout">
-      <div class="projects-carousel-wrapper">
-        <div class="project-card glass-card">
-          <div class="project-img" style="background:#8B0000;"></div>
-          <div class="project-info">
-            <h3>Universidad La Salle México | Página del Estudiante</h3>
-            <p>Desarrollo de plataforma web para gestión y seguimiento de alumnos con módulos de servicios académicos.</p>
-            <div class="project-tags">
-              <span>PHP</span><span>HTML</span><span>CSS</span><span>FIGMA</span><span>SQL</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card glass-card">
-          <div class="project-img" style="background:#1a1a2e;"></div>
-          <div class="project-info">
-            <h3>Proyecto Placeholder 2</h3>
-            <p>Descripción del segundo proyecto. Lorem ipsum placeholder text.</p>
-            <div class="project-tags">
-              <span>React</span><span>Node.js</span><span>MongoDB</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card glass-card">
-          <div class="project-img" style="background:#0d2137;"></div>
-          <div class="project-info">
-            <h3>Proyecto Placeholder 3</h3>
-            <p>Descripción del tercer proyecto. Lorem ipsum placeholder text.</p>
-            <div class="project-tags">
-              <span>Python</span><span>FastAPI</span><span>PostgreSQL</span>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="carousel-controls">
-        <button class="prev-btn" aria-label="Anterior">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <div class="dots">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
+    <!-- Vista 1: categorías -->
+    <div class="projects-categories" id="projects-categories">
+      <h2 class="section-title">PROJECTS</h2>
+      <div class="categories-grid">
+        <div class="category-card glass-card category-main" data-cat-go="web">
+          <h3><i class="fa-solid fa-globe service-icon"></i> WEB PAGES</h3>
+          <button class="open-btn">OPEN <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
         </div>
-        <button class="next-btn" aria-label="Siguiente">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
-
-      <div class="certifications">
-        <h3>CERTIFICACIONES</h3>
-        <div class="cert-list">
-          <div class="cert-item glass-card"></div>
-          <div class="cert-item glass-card"></div>
-          <div class="cert-item glass-card"></div>
-          <div class="cert-item glass-card"></div>
+        <div class="category-card glass-card" data-cat-go="ia">
+          <h3><i class="fa-solid fa-robot service-icon"></i> IA</h3>
+          <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+        </div>
+        <div class="category-card glass-card" data-cat-go="design">
+          <h3><i class="fa-solid fa-pen-ruler service-icon"></i> DESIGN</h3>
+          <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+        </div>
+        <div class="category-card glass-card" data-cat-go="data">
+          <h3><i class="fa-solid fa-chart-simple service-icon"></i> DATA</h3>
+          <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+        </div>
+        <div class="category-card glass-card" data-cat-go="pm">
+          <h3><i class="fa-solid fa-clipboard-list service-icon"></i> PM</h3>
+          <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+        </div>
+        <div class="category-card glass-card" data-cat-go="video">
+          <h3><i class="fa-solid fa-video service-icon"></i> VIDEO</h3>
+          <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+        </div>
+        <div class="category-card glass-card category-wide" data-cat-go="lidership">
+          <h3><i class="fa-solid fa-users service-icon"></i> LIDERSHIP</h3>
         </div>
       </div>
     </div>
+
+    <!-- Vista 2: detalles por categoría -->
+    <div class="projects-details">
+
+      <!-- WEB PAGES -->
+      <article class="projects-detail" data-cat="web">
+        <button class="back-btn" data-back>
+          <i class="fa-solid fa-arrow-left"></i> Back to projects
+        </button>
+        <h2 class="section-title">WEB PAGES</h2>
+        <div class="real-cards-grid">
+
+          <div class="real-card">
+            <img src="img/MyWP_SeguimientoAlumnos.png" class="real-card-bg" alt="">
+            <div class="real-card-top">
+              <span class="real-badge"><i class="fa-solid fa-star"></i> Featured</span>
+              <div class="real-dots">
+                <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+              </div>
+            </div>
+            <div class="real-card-info glass-card">
+              <h3>Universidad La Salle</h3>
+              <p><i class="fa-solid fa-location-dot"></i> Página del Estudiante</p>
+              <div class="real-meta">
+                <span>PHP</span><span>HTML</span><span>CSS</span><span>SQL</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="real-card">
+            <img src="img/MyWP_EncuestasColaboradores.png" class="real-card-bg" alt="">
+            <div class="real-card-top">
+              <span class="real-badge"><i class="fa-solid fa-bolt"></i> Newly Added</span>
+            </div>
+            <div class="real-card-info glass-card">
+              <h3>Encuestas Colaboradores</h3>
+              <p><i class="fa-solid fa-location-dot"></i> Sistema de feedback interno</p>
+              <div class="real-meta">
+                <span>PHP</span><span>JS</span><span>MySQL</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="real-card">
+            <img src="img/MyWP_Services.png" class="real-card-bg" alt="">
+            <div class="real-card-top">
+              <span class="real-badge"><i class="fa-solid fa-fire"></i> Prime Pick</span>
+            </div>
+            <div class="real-card-info glass-card">
+              <h3>Services Hub</h3>
+              <p><i class="fa-solid fa-location-dot"></i> Plataforma de servicios</p>
+              <div class="real-meta">
+                <span>HTML</span><span>CSS</span><span>JS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="real-card">
+            <img src="img/MyWB_Mapa.png" class="real-card-bg" alt="">
+            <div class="real-card-top">
+              <span class="real-badge"><i class="fa-solid fa-map"></i> Featured</span>
+            </div>
+            <div class="real-card-info glass-card">
+              <h3>Mapa Interactivo</h3>
+              <p><i class="fa-solid fa-location-dot"></i> Visualización geográfica</p>
+              <div class="real-meta">
+                <span>JS</span><span>Leaflet</span><span>API</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- IA -->
+      <article class="projects-detail" data-cat="ia">
+        <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
+        <h2 class="section-title">IA</h2>
+        <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Inteligencia Artificial...</p>
+      </article>
+
+      <!-- DESIGN -->
+      <article class="projects-detail" data-cat="design">
+        <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
+        <h2 class="section-title">DESIGN</h2>
+        <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Diseño...</p>
+      </article>
+
+      <!-- DATA -->
+      <article class="projects-detail" data-cat="data">
+        <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
+        <h2 class="section-title">DATA</h2>
+        <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Análisis de Datos...</p>
+      </article>
+
+      <!-- PM -->
+      <article class="projects-detail" data-cat="pm">
+        <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
+        <h2 class="section-title">PROJECT MANAGEMENT</h2>
+        <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Project Management...</p>
+      </article>
+
+      <!-- VIDEO -->
+      <article class="projects-detail" data-cat="video">
+        <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
+        <h2 class="section-title">VIDEO</h2>
+        <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Video y Producción...</p>
+      </article>
+
+      <!-- LIDERSHIP -->
+      <article class="projects-detail" data-cat="lidership">
+        <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
+        <h2 class="section-title">LIDERSHIP</h2>
+        <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Liderazgo...</p>
+      </article>
+
+    </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- ══ SERVICES (Landing / Web / Contacto / Cotizaciones) ══ -->
   <section id="services">
     <h2 class="section-title">SERVICES</h2>
-    <div class="services-grid">
-      <div class="service-card glass-card service-main">
-        <h3><i class="fa-solid fa-globe service-icon"></i> WEB PAGES</h3>
-        <button class="open-btn">OPEN <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+    <div class="services-list">
+
+      <div class="service-item glass-card">
+        <i class="fa-solid fa-rocket service-big-icon"></i>
+        <h3>LANDING PAGES</h3>
+        <p>Diseño de landings efectivas, optimizadas para captación de leads y conversiones.</p>
       </div>
-      <div class="service-card glass-card">
-        <h3><i class="fa-solid fa-robot service-icon"></i> IA</h3>
-        <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+
+      <div class="service-item glass-card">
+        <i class="fa-solid fa-globe service-big-icon"></i>
+        <h3>PÁGINA WEB</h3>
+        <p>Desarrollo de sitios completos, responsive y optimizados para SEO y rendimiento.</p>
       </div>
-      <div class="service-card glass-card">
-        <h3><i class="fa-solid fa-pen-ruler service-icon"></i> DESIGN</h3>
-        <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+
+      <a href="#contact" class="service-item glass-card service-link">
+        <i class="fa-solid fa-envelope service-big-icon"></i>
+        <h3>MI CONTACTO</h3>
+        <p>¿Tienes una pregunta? Escríbeme directamente y te respondo en 24h.</p>
+      </a>
+
+      <div class="service-item glass-card service-quote">
+        <div>
+          <i class="fa-solid fa-file-invoice-dollar service-big-icon"></i>
+          <h3>COTIZACIONES</h3>
+          <p>Solicita una cotización personalizada según el alcance de tu proyecto.</p>
+        </div>
+        <a href="mailto:ulises.hd06@gmail.com?subject=Cotización%20de%20Proyecto" class="quote-btn">
+          SOLICITAR <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
-      <div class="service-card glass-card">
-        <h3><i class="fa-solid fa-chart-simple service-icon"></i> DATA</h3>
-        <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
-      </div>
-      <div class="service-card glass-card">
-        <h3><i class="fa-solid fa-clipboard-list service-icon"></i> PM</h3>
-        <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
-      </div>
-      <div class="service-card glass-card">
-        <h3><i class="fa-solid fa-video service-icon"></i> VIDEO</h3>
-        <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
-      </div>
-      <div class="service-card glass-card service-wide">
-        <h3><i class="fa-solid fa-users service-icon"></i> LIDERSHIP</h3>
-      </div>
+
     </div>
   </section>
 
@@ -217,18 +290,15 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>&copy; 2025 UlisesHD &mdash; Todos los derechos reservados.</p>
   </footer>
 
-  <!-- Three.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-  <!-- Intro primero -->
   <script src="js/intro.js"></script>
-  <!-- Scripts principales -->
   <script src="js/hero.js"></script>
   <script src="js/scroll.js"></script>
+  <script src="js/projects.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
