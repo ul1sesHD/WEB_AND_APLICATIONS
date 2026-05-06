@@ -24,25 +24,20 @@
   }
 
   // Category card → open detail
-  section.querySelectorAll('[data-cat-go]').forEach(el => {
-    el.addEventListener('click', e => {
-      e.preventDefault();
-      showDetail(el.dataset.catGo);
-    });
+  section.addEventListener('click', e => {
+    const card = e.target.closest('[data-cat-go]');
+    if (card) showDetail(card.dataset.catGo);
   });
 
   // Back buttons → return to categories
-  section.querySelectorAll('[data-back]').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.preventDefault();
-      e.stopPropagation();
-      showCategories();
-    });
+  section.addEventListener('click', e => {
+    if (e.target.closest('[data-back]')) showCategories();
   });
 
   // Nav "PROJECTS" link → reset to categories view
-  document.querySelectorAll('a[href="#projects"]').forEach(a => {
-    a.addEventListener('click', () => showCategories());
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a[href="#projects"], a[data-section="projects"]');
+    if (link) showCategories();
   });
 
   // Initial state

@@ -43,30 +43,6 @@
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* FUTURE */
-#future {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #000;
-  min-height: 50vh;
-  padding: 4rem 5%;
-}
-
-.future-container {
-  text-align: center;
-  padding: 4rem 3rem;
-  max-width: 560px;
-  width: 100%;
-}
-
-.future-container p {
-  margin-top: 1.25rem;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.9rem;
-}
-
 @media (max-width: 480px) {
   .contact-container { padding: 2.5rem 1.5rem; }
-  .future-container { padding: 2.5rem 1.5rem; }
 }

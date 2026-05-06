@@ -6,13 +6,17 @@
   --glass-blur: blur(16px);
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
 
 body {
   font-family: 'Inter', sans-serif;
   background: #000;
   color: #fff;
   overflow-x: hidden;
+  padding-top: 80px;
 }
 
 .glass-card {
@@ -64,10 +68,19 @@ section {
   padding: 7rem 5% 4rem;
 }
 
-/* ── SPA view system ── */
-section:not(.view-active) { display: none; }
+/* ── index.html: SPA view system (excluye .page-section) ── */
+section:not(.view-active):not(.page-section) {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
 
 section.view-active:not(#hero) {
+  animation: viewSlideIn 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── main.html: Tab navigation ── */
+.page-section.active {
   animation: viewSlideIn 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -177,6 +190,29 @@ footer {
   font-size: 0.72rem;
   opacity: 0.35;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.2s, transform 0.2s;
+  text-decoration: none;
+}
+
+.footer-socials a:hover {
+  color: rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
 }
 
 /* Scroll fade-in */

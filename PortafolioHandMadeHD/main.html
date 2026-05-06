@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UlisesHD | Portafolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/contact.css">
+
+  <script src="js/navbar.js" type="module"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <main-navbar></main-navbar>
+
+  <!-- CONTENEDOR DE SECCIONES CON TABS -->
+  <div id="sections-container">
+
+    <!-- ABOUT -->
+    <section id="about" class="page-section active">
+      <div class="about-container">
+        <div class="about-text">
+          <h2 class="section-title">SOBRE MI</h2>
+          <p>¡Hola! Soy H. Ulises Hernandez Dominguez, Ing. en sistemas, fungiendo como desarrollador y manager de proyectos Full Stack, combino conocimiento técnico, liderazgo y pasión, mi fuerte, crear soluciones escalables que prioricen tanto lo técnico como la responsabilidad social.</p>
+        </div>
+        <div class="about-avatar">
+          <img src="img/me_avatarpng.png" alt="UlisesHD Avatar">
+        </div>
+      </div>
+      <div class="about-banner glass-card">CREATIVO</div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="page-section">
+      <!-- Vista 1: categorías -->
+      <div class="projects-categories" id="projects-categories">
+        <h2 class="section-title">PROJECTS</h2>
+        <div class="categories-grid">
+          <div class="category-card glass-card category-main" data-cat-go="web">
+            <i class="fa-solid fa-globe category-bg-icon"></i>
+            <h3>WEB PAGES</h3>
+            <button class="open-btn">OPEN <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+          </div>
+          <div class="category-card glass-card" data-cat-go="ia">
+            <i class="fa-solid fa-robot category-bg-icon"></i>
+            <h3>IA</h3>
+            <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+          </div>
+          <div class="category-card glass-card" data-cat-go="design">
+            <i class="fa-solid fa-pen-ruler category-bg-icon"></i>
+            <h3>DESIGN</h3>
+            <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+          </div>
+          <div class="category-card glass-card" data-cat-go="data">
+            <i class="fa-solid fa-chart-simple category-bg-icon"></i>
+            <h3>DATA</h3>
+            <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+          </div>
+          <div class="category-card glass-card" data-cat-go="pm">
+            <i class="fa-solid fa-clipboard-list category-bg-icon"></i>
+            <h3>PM</h3>
+            <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+          </div>
+          <div class="category-card glass-card" data-cat-go="video">
+            <i class="fa-solid fa-video category-bg-icon"></i>
+            <h3>VIDEO</h3>
+            <button class="icon-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+          </div>
+          <div class="category-card glass-card category-wide" data-cat-go="lidership">
+            <i class="fa-solid fa-users category-bg-icon"></i>
+            <h3>LIDERSHIP</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vista 2: detalles por categoría -->
+      <div class="projects-details">
+        <!-- WEB PAGES -->
+        <article class="projects-detail" data-cat="web">
+          <button class="back-btn" data-back>
+            <i class="fa-solid fa-arrow-left"></i> Back to projects
+          </button>
+          <h2 class="section-title">WEB PAGES</h2>
+          <div class="real-cards-grid">
+            <div class="real-card">
+              <img src="img/MyWP_SeguimientoAlumnos.png" class="real-card-bg" alt="">
+              <div class="real-card-top">
+                <span class="real-badge"><i class="fa-solid fa-star"></i> Featured</span>
+                <div class="real-dots">
+                  <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+                </div>
+              </div>
+              <div class="real-card-info glass-card">
+                <h3>Universidad La Salle</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Página del Estudiante</p>
+                <div class="real-meta">
+                  <span>PHP</span><span>HTML</span><span>CSS</span><span>SQL</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="real-card">
+              <img src="img/MyWP_EncuestasColaboradores.png" class="real-card-bg" alt="">
+              <div class="real-card-top">
+                <span class="real-badge"><i class="fa-solid fa-bolt"></i> Newly Added</span>
+              </div>
+              <div class="real-card-info glass-card">
+                <h3>Encuestas Colaboradores</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Sistema de feedback interno</p>
+                <div class="real-meta">
+                  <span>PHP</span><span>JS</span><span>MySQL</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="real-card">
+              <img src="img/MyWP_Services.png" class="real-card-bg" alt="">
+              <div class="real-card-top">
+                <span class="real-badge"><i class="fa-solid fa-fire"></i> Prime Pick</span>
+              </div>
+              <div class="real-card-info glass-card">
+                <h3>Services Hub</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Plataforma de servicios</p>
+                <div class="real-meta">
+                  <span>HTML</span><span>CSS</span><span>JS</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="real-card">
+              <img src="img/MyWB_Mapa.png" class="real-card-bg" alt="">
+              <div class="real-card-top">
+                <span class="real-badge"><i class="fa-solid fa-map"></i> Featured</span>
+              </div>
+              <div class="real-card-info glass-card">
+                <h3>Mapa Interactivo</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Visualización geográfica</p>
+                <div class="real-meta">
+                  <span>JS</span><span>Leaflet</span><span>API</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- IA -->
+        <article class="projects-detail" data-cat="ia">
+          <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
+          <h2 class="section-title">IA</h2>
+          <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Inteligencia Artificial...</p>
+        </article>
+
+        <article class="projects-detail" data-cat="design">
+          <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
+          <h2 class="section-title">DESIGN</h2>
+          <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Diseño...</p>
+        </article>
+
+        <article class="projects-detail" data-cat="data">
+          <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
+          <h2 class="section-title">DATA</h2>
+          <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Análisis de Datos...</p>
+        </article>
+
+        <article class="projects-detail" data-cat="pm">
+          <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
+          <h2 class="section-title">PROJECT MANAGEMENT</h2>
+          <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Project Management...</p>
+        </article>
+
+        <article class="projects-detail" data-cat="video">
+          <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
+          <h2 class="section-title">VIDEO</h2>
+          <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Video y Producción...</p>
+        </article>
+
+        <article class="projects-detail" data-cat="lidership">
+          <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
+          <h2 class="section-title">LIDERSHIP</h2>
+          <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Liderazgo...</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="page-section">
+      <h2 class="section-title">SERVICES</h2>
+      <div class="services-list">
+        <div class="service-item glass-card">
+          <i class="fa-solid fa-rocket service-big-icon"></i>
+          <h3>LANDING PAGES</h3>
+          <p>Diseño de landings efectivas, optimizadas para captación de leads y conversiones.</p>
+        </div>
+
+        <div class="service-item glass-card">
+          <i class="fa-solid fa-globe service-big-icon"></i>
+          <h3>PÁGINA WEB</h3>
+          <p>Desarrollo de sitios completos, responsive y optimizados para SEO y rendimiento.</p>
+        </div>
+
+        <div class="service-item glass-card service-quote">
+          <i class="fa-solid fa-file-invoice-dollar service-big-icon"></i>
+          <h3>COTIZACIONES</h3>
+          <p>Solicita una cotización personalizada según el alcance de tu proyecto.</p>
+          <a href="mailto:ulises.hd06@gmail.com?subject=Cotización%20de%20Proyecto" class="quote-btn">
+            SOLICITAR <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="page-section">
+      <h2 class="section-title">CONTACT</h2>
+      <div class="contact-container glass-card">
+        <p>¿Tienes un proyecto en mente? Hablemos.</p>
+        <a href="mailto:ulises.hd06@gmail.com" class="contact-cta">
+          <i class="fa-solid fa-envelope"></i> ulises.hd06@gmail.com
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2025 UlisesHD &mdash; Todos los derechos reservados.</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/uliseshd/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/ul1sesHD" target="_blank" rel="noopener noreferrer" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </footer>
+
+  <script src="js/scroll.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/page-nav.js"></script>
+
+</body>
+</html>
