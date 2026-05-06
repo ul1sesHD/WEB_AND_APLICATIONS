@@ -11,7 +11,14 @@
       "Bash(git merge *)",
       "Bash(git stash *)",
       "Bash(git push *)",
-      "Bash(git pull *)"
+      "Bash(git pull *)",
+      "Bash(curl -s http://localhost:3000/about)",
+      "Bash(curl -s http://localhost:3000/projects)",
+      "Bash(curl -s http://localhost:3000/services)",
+      "Bash(curl -s -I http://localhost:3000/css/main.css)",
+      "Bash(curl -s -I http://localhost:3000/js/hero.js)",
+      "Bash(curl -s -I http://localhost:3000/img/LogoHDWhite.png)",
+      "PowerShell(gh --version)"
     ]
   }
 }
