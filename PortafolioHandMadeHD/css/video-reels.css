@@ -1,0 +1,318 @@
+/* ═══════════════════════════════════════════════════════════
+   VIDEO REELS — Galería de reels con flip 3D
+   ═══════════════════════════════════════════════════════════ */
+
+.video-subtitle {
+  margin: -1rem 0 2rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.video-subtitle a {
+  color: #e1306c;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.video-subtitle a:hover {
+  color: #ff5e8a;
+  text-decoration: underline;
+}
+
+/* ── Stage / Grid contenedor ── */
+.video-reels-stage {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.video-reels-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CARD - Aspect ratio 9:16 (formato reel)
+   ═══════════════════════════════════════════════════════════ */
+.video-reel-card {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  perspective: 1500px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(40px) scale(0.92) rotate(var(--rot, 0deg));
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i) * 60ms);
+  --rot: 0deg;
+}
+
+/* Slight random rotation per card (estilo scatter inicial) */
+.video-reel-card:nth-child(3n)   { --rot: -2deg; }
+.video-reel-card:nth-child(3n+1) { --rot: 1.5deg; }
+.video-reel-card:nth-child(3n+2) { --rot: -1deg; }
+
+/* Trigger animation cuando .animate-in está activa en el grid */
+.video-reels-grid.animate-in .video-reel-card {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0);
+}
+
+/* Inner wrapper para flip 3D */
+.reel-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55),
+              0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.video-reel-card.flipped .reel-inner {
+  transform: rotateY(180deg);
+}
+
+.video-reel-card:hover .reel-inner {
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7),
+              0 0 0 1px rgba(255, 255, 255, 0.08);
+  transform: translateY(-3px);
+}
+
+.video-reel-card.flipped:hover .reel-inner {
+  transform: rotateY(180deg) translateY(-3px);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FRONT: Video
+   ═══════════════════════════════════════════════════════════ */
+.reel-front,
+.reel-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: #000;
+}
+
+.reel-front video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.reel-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  pointer-events: none;
+}
+
+.video-reel-card:hover .reel-overlay {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.32);
+}
+
+.play-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.7);
+  transition: transform 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+.video-reel-card:hover .play-icon {
+  transform: scale(1);
+}
+
+.play-icon i {
+  color: #000;
+  font-size: 1.1rem;
+  margin-left: 3px;
+}
+
+/* Bottom info bar (sobre el video) */
+.reel-bottom-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem 0.85rem 0.85rem;
+  background: linear-gradient(180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.85) 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.reel-front-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.reel-front-cat {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BACK: Info
+   ═══════════════════════════════════════════════════════════ */
+.reel-back {
+  transform: rotateY(180deg);
+  background:
+    linear-gradient(160deg,
+      rgba(40, 40, 50, 0.95) 0%,
+      rgba(15, 15, 22, 0.98) 60%,
+      rgba(0, 0, 0, 1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.reel-back-content {
+  position: absolute;
+  inset: 0;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.7rem;
+}
+
+.reel-cat-badge {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  background: rgba(225, 48, 108, 0.18);
+  border: 1px solid rgba(225, 48, 108, 0.4);
+  color: #ff7eb0;
+  border-radius: 999px;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.reel-back-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  color: #fff;
+  line-height: 1.15;
+}
+
+.reel-back-desc {
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 90%;
+}
+
+.reel-ig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+  padding: 0.55rem 1rem;
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(225, 48, 108, 0.35);
+}
+
+.reel-ig-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 22px rgba(225, 48, 108, 0.55);
+}
+
+.reel-ig-btn i {
+  font-size: 0.95rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CTA bottom (Sígueme en Instagram)
+   ═══════════════════════════════════════════════════════════ */
+.video-reels-cta {
+  margin-top: 2.5rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.video-reels-cta p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+}
+
+.reel-ig-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2rem;
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 6px 20px rgba(225, 48, 108, 0.4);
+}
+
+.reel-ig-cta:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 30px rgba(225, 48, 108, 0.6);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .video-reels-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 750px) {
+  .video-reels-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .reel-front-title { font-size: 0.85rem; }
+  .reel-back-title  { font-size: 1rem; }
+  .play-icon { width: 44px; height: 44px; }
+  .play-icon i { font-size: 0.9rem; }
+}
+
+@media (max-width: 460px) {
+  .video-reels-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+}

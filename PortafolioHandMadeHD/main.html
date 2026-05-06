@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/about.css">
   <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/video-reels.css">
   <link rel="stylesheet" href="css/services.css">
   <link rel="stylesheet" href="css/contact.css">
 
@@ -184,7 +185,20 @@
         <article class="projects-detail" data-cat="video">
           <button class="back-btn" data-back><i class="fa-solid fa-arrow-left"></i> Back to projects</button>
           <h2 class="section-title">VIDEO</h2>
-          <p class="empty-msg"><i class="fa-solid fa-clock"></i> Próximamente proyectos de Video y Producción...</p>
+          <p class="video-subtitle">
+            Reels e Instagram videos — <a href="https://www.instagram.com/ulises.hd" target="_blank" rel="noopener noreferrer">@ulises.hd</a>
+          </p>
+
+          <div class="video-reels-stage" id="video-reels-stage">
+            <div class="video-reels-grid" id="video-reels-grid"></div>
+          </div>
+
+          <div class="video-reels-cta">
+            <p>¿Quieres ver más?</p>
+            <a href="https://www.instagram.com/ulises.hd" target="_blank" rel="noopener noreferrer" class="reel-ig-cta">
+              <i class="fab fa-instagram"></i> Sígueme en Instagram
+            </a>
+          </div>
         </article>
 
         <article class="projects-detail" data-cat="lidership">
@@ -197,29 +211,47 @@
 
     <!-- SERVICES -->
     <section id="services" class="page-section">
-      <h2 class="section-title">SERVICES</h2>
-      <div class="services-list">
-        <div class="service-item glass-card">
-          <i class="fa-solid fa-rocket service-big-icon"></i>
-          <h3>LANDING PAGES</h3>
-          <p>Diseño de landings efectivas, optimizadas para captación de leads y conversiones.</p>
+
+      <!-- VISTA PRINCIPAL -->
+      <div class="services-view services-main visible">
+        <h2 class="section-title">SERVICES</h2>
+
+        <div class="services-hero glass-card">
+          <p class="services-tagline"><em>CRECE TU NEGOCIO, UNA PÁGINA QUE SE ADAPTE A TI Y A TU NEGOCIO</em></p>
+          <button class="services-personalized-btn">PERSONALIZADA</button>
         </div>
 
-        <div class="service-item glass-card">
-          <i class="fa-solid fa-globe service-big-icon"></i>
-          <h3>PÁGINA WEB</h3>
-          <p>Desarrollo de sitios completos, responsive y optimizados para SEO y rendimiento.</p>
-        </div>
+        <div class="services-options">
+          <div class="service-option glass-card">
+            <h3>¿QUE TIPO DE PÁGINA NECESITO?</h3>
+            <button class="btn-primary" data-services-go="encuesta">IR A ENCUESTA <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
 
-        <div class="service-item glass-card service-quote">
-          <i class="fa-solid fa-file-invoice-dollar service-big-icon"></i>
-          <h3>COTIZACIONES</h3>
-          <p>Solicita una cotización personalizada según el alcance de tu proyecto.</p>
-          <a href="mailto:ulises.hd06@gmail.com?subject=Cotización%20de%20Proyecto" class="quote-btn">
-            SOLICITAR <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <div class="service-option glass-card">
+            <h3>VER CATÁLOGO <i class="fa-solid fa-arrow-right"></i></h3>
+            <p>Ver el catálogo completo de páginas web</p>
+            <button class="btn-primary" data-services-go="catalogo">VER CATÁLOGO</button>
+          </div>
         </div>
       </div>
+
+      <!-- VISTA ENCUESTA -->
+      <div class="services-view services-encuesta">
+        <button class="back-btn" data-services-back>
+          <i class="fa-solid fa-arrow-left"></i> Volver a Services
+        </button>
+        <div class="encuesta-content"></div>
+        <div class="encuesta-results"></div>
+      </div>
+
+      <!-- VISTA CATÁLOGO -->
+      <div class="services-view services-catalogo">
+        <button class="back-btn" data-services-back>
+          <i class="fa-solid fa-arrow-left"></i> Volver a Services
+        </button>
+        <div class="catalogo-content"></div>
+      </div>
+
     </section>
 
     <!-- CONTACT -->
@@ -249,6 +281,8 @@
 
   <script src="js/scroll.js"></script>
   <script src="js/projects.js"></script>
+  <script src="js/video-reels.js"></script>
+  <script src="js/services.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/main.js"></script>
   <script src="js/page-nav.js"></script>
