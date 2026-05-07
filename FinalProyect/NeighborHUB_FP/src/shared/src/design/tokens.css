@@ -1,0 +1,49 @@
+/* =============================================================================
+   NeighborHub design tokens — CSS variables.
+   Mirrors `tokens.ts` (single source of truth lives in TypeScript).
+   ============================================================================= */
+
+:root {
+  /* ─── Colors ───────────────────────────────────────────────────────────── */
+  --color-toldo-red:            #C0392B;
+  --color-toldo-red-light:      #F5C6C2;
+  --color-quellite-green:       #1A7A4A;
+  --color-quellite-green-light: #C3EDCF;
+  --color-corn-yellow:          #F4C430;
+  --color-sign-blue:            #1565C0;
+  --color-chili-orange:         #E65100;
+  --color-bazar-magenta:        #880E4F;
+  --color-comal-brown:          #3E2723;
+  --color-paper-cream:          #FFF8EE;
+  --color-adobe-gray:           #5D4037;
+  --color-metal-base:           #8A8A8A;
+  --color-metal-light:          #BDBDBD;
+  --color-metal-dark:           #4A4A4A;
+
+  /* ─── Typography ───────────────────────────────────────────────────────── */
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body:    "Nunito", sans-serif;
+  --font-quote:   "Playfair Display", serif;
+
+  /* ─── Shadows ──────────────────────────────────────────────────────────── */
+  --shadow-hard:  4px 4px 0 #1A1A1A;
+  --shadow-soft:  0 4px 12px rgba(0, 0, 0, 0.10);
+  --shadow-metal: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.4);
+
+  /* ─── Radii ────────────────────────────────────────────────────────────── */
+  --radius-sharp: 2px;
+  --radius-sm:    4px;
+  --radius-md:    8px;
+  --radius-lg:    14px;
+  --radius-full:  9999px;
+
+  /* ─── Spacing scale ────────────────────────────────────────────────────── */
+  --space-xs:    4px;
+  --space-sm:    8px;
+  --space-md:    12px;
+  --space-lg:    16px;
+  --space-xl:    24px;
+  --space-2xl:   32px;
+  --space-3xl:   48px;
+  --space-4xl:   64px;
+}
