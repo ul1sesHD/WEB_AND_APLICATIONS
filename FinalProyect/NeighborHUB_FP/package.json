@@ -1,0 +1,21 @@
+{
+  "name": "neighborhub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NeighborHub — hyperlocal commerce platform for Mexico City neighborhoods.",
+  "workspaces": [
+    "src/shared",
+    "src/web",
+    "src/admin"
+  ],
+  "scripts": {
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "dev:web": "npm run dev --workspace src/web",
+    "dev:admin": "npm run dev --workspace src/admin"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}
