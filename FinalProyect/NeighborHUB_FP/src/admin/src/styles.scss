@@ -1,0 +1,39 @@
+/* NeighborHub Admin — global styles */
+
+.btn-primary {
+  --bs-btn-bg: var(--color-toldo-red);
+  --bs-btn-border-color: var(--color-toldo-red);
+  --bs-btn-hover-bg: #a52f22;
+  --bs-btn-hover-border-color: #a52f22;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+
+.navbar-brand {
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+}
+
+.card-header h2,
+.card-header h5 {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-paper-cream);
+  color: var(--color-comal-brown);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-toldo { color: var(--color-toldo-red) !important; }
+.text-quellite { color: var(--color-quellite-green) !important; }
+.bg-toldo { background-color: var(--color-toldo-red) !important; }
+.bg-quellite { background-color: var(--color-quellite-green) !important; }
+
+.cursor-pointer { cursor: pointer; }

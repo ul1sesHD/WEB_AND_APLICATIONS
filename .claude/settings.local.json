@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npm install *)",
       "Bash(npm run *)",
-      "Bash(xargs wc -l)"
+      "Bash(xargs wc -l)",
+      "Bash(find \"C:/Users/Ulises/Documents/WEB_AND_APLICATIONS/FinalProyect/NeighborHUB_FP\" -maxdepth 7 \\\\\\( -name \"*.png\" -o -name \"*.jpg\" -o -name \"*.jpeg\" -o -name \"*.webp\" -o -name \"*.svg\" \\\\\\) 2>/dev/null | grep -v node_modules | grep -v \".vite\" | grep -v dist)"
     ]
   }
 }
